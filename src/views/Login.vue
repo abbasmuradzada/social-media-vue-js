@@ -25,7 +25,6 @@
                         <div class="card-body rounded-0 text-left">
                             <h2 class="fw-700 display1-size display2-md-size mb-3">Login into <br>your account</h2>
                             <form>
-                                
                                 <div class="form-group icon-input mb-3">
                                     <i class="font-sm ti-email text-grey-500 pe-0"></i>
                                     <input type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address">                        
