@@ -74,6 +74,22 @@ export default new Vuex.Store({
           })
       })
     },
+    logout({commit}, router){
+      return new Promise ((resolve, reject) => {
+        globalService.logout()
+          .then((data) => {
+            commit("setUserToken", null)
+            commit("setUserId", null)
+            commit("setUserRole", null)
+            localStorage.clear()
+            router.push("/login")
+            resolve(data)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    }
   },
   modules: {
   }

@@ -83,6 +83,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         data: () => ({
             snackbarText: "xanalari",
@@ -93,6 +94,9 @@
             password: '123',
             rePassword: '123'
         }),
+        computed: {
+            ...mapGetters(["isAuthenticated"])
+        },
         methods: {
             goToLogin(){
                 this.$router.push({name : 'Login'})
