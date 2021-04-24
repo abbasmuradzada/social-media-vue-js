@@ -3,14 +3,20 @@
 </template>
 
 <script>
-// import moduleName from ''
 export default {
-  
-}
+  name: 'App',
+
+  components: {
+    //
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
 <style lang="scss">
   @import './assets/scss/feather';
-  // @import './assets/emoji';
   @import './assets/global';
 </style>
