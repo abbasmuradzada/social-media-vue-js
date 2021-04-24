@@ -27,7 +27,11 @@
                         <form @submit.prevent="submit()">
                             <div class="form-group icon-input mb-3">
                                 <i class="font-sm ti-user text-grey-500 pe-0"></i>
-                                <input v-model="name" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Name">                        
+                                <input v-model="firstname" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="First Name">                        
+                            </div>
+                            <div class="form-group icon-input mb-3">
+                                <i class="font-sm ti-user text-grey-500 pe-0"></i>
+                                <input v-model="lastname" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Last Name">                        
                             </div>
                             <div class="form-group icon-input mb-3">
                                 <i class="font-sm ti-email text-grey-500 pe-0"></i>
@@ -58,7 +62,7 @@
         <v-snackbar
                 v-model="snackbar"
                 >
-                xanalari doldurun
+                {{snackbarText}}
                 <template v-slot:action="{ attrs }">
                     <v-btn
                     color="pink"
@@ -79,33 +83,58 @@
 </template>
 
 <script>
-import axios from 'axios'
     export default {
         data: () => ({
+            snackbarText: "xanalari",
             snackbar: false,
-            name: '',
-            email: '',
-            password: '',
-            rePassword: ''
+            firstname: 'abbas',
+            lastname: 'abbas',
+            email: 'b@b.com',
+            password: '123',
+            rePassword: '123'
         }),
         methods: {
             goToLogin(){
                 this.$router.push({name : 'Login'})
             },
             async submit(){
-                if (this.name.length < 1 || this.email.length < 1 || this.password.length < 1 || this.rePassword.length < 1) {
+                if (this.firstname.length < 1 || 
+                    this.lastname.length < 1 || 
+                    this.email.length < 1 || 
+                    this.password.length < 1 || 
+                    this.rePassword.length < 1) 
+                {
+                    this.snackbarText = "xanalri doldurun"
                     this.snackbar = true
                 }else{
-                    await axios.post('http://localhost:5000/api/auth/signup', {
-                        firstName:this.name,
-                        lastName:this.name,
-                        email:this.email,
-                        password:this.password
-                    }).then(res => {
-                        console.log(res);
-                    }).catch(err => {
-                        console.log(err);
-                    })
+                    if (this.password !== this.rePassword) {
+                        this.snackbarText = "sifre ve tesdiqini duz edin"
+                        this.snackbar = true
+                    }else{
+                        return new Promise((resolve, reject) => {
+                            this.$store
+                            .dispatch("register", {
+                                firstName:this.firstname,
+                                lastName:this.lastname,
+                                email:this.email,
+                                password:this.password
+                            })
+                            .then((res) => {
+                                resolve(res);
+                                if (this.isAuthenticated) {
+                                    const { query } = this.$router.currentRoute
+                                    this.$router.push(query.redirect ? query.redirect : '/')
+                                }
+                            })
+                            .catch((err) => {
+                                this.snackbarText = "salam"
+                                this.snackbar = true;
+                                this.email = '';
+                                this.password = '';
+                                reject(err);
+                            });
+                        });
+                    }
                 }
             }
         }

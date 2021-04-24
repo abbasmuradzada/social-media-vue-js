@@ -30,7 +30,28 @@ const globalService = {
               }
           );
         });
-      },
+    },
+    register(credentials) {
+        return new Promise((resolve, reject) => {
+            axios.post("/auth/signup", {
+                firstName: credentials.firstName,
+                lastName: credentials.lastName,
+                email: credentials.email,
+                password: credentials.password
+            })
+              .then((res) => {
+                console.log('registered');
+                if (res.data.user.token) {
+                  resolve(res.data.user);
+                }
+              })
+              .catch((err) => {
+                  console.log('register failed');
+                reject(err);
+              }
+          );
+        });
+    },
 }
 
 export default globalService;

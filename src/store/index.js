@@ -60,6 +60,20 @@ export default new Vuex.Store({
           })
       })
     },
+    register({commit}, credentials) {
+      return new Promise((resolve, reject) => {
+        globalService.register(credentials)
+          .then((data) => {
+            commit('setUserToken', data.token)
+            commit('setUserId', data._id)
+            commit('setUserRole', data.role)              
+            resolve(data)
+          })
+          .catch((err) => {
+            reject(err);
+          })
+      })
+    },
   },
   modules: {
   }

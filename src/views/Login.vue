@@ -51,7 +51,7 @@
             <v-snackbar
                 v-model="snackbar"
                 >
-                xanalari doldurun
+                {{snackbarText}}
                 <template v-slot:action="{ attrs }">
                     <v-btn
                     color="pink"
@@ -59,7 +59,7 @@
                     v-bind="attrs"
                     @click="snackbar = false"
                     >
-                    Close
+                    close
                     </v-btn>
                 </template>
             </v-snackbar>
@@ -71,12 +71,11 @@
 
 <script>
     import { mapGetters } from 'vuex'
-
-// import axios from 'axios'
     export default {
         data: () => ({
             email: 'a@a.az',
             password: 'abbas123',
+            snackbarText: "xanalari doldurun",
             snackbar: false
         }),
         computed: {
@@ -89,6 +88,7 @@
             async submit(){
                 if (this.email.length < 1 || this.password.length < 1) {
                     console.log("failed login");   
+                    this.snackbarText = "xanalari doldurun"
                     this.snackbar = true
                 }else{
                     return new Promise((resolve, reject) => {
@@ -106,6 +106,7 @@
                             }
                         })
                         .catch((err) => {
+                            this.snackbarText = "email ve ya shifre yanlish daxil edilib"
                             this.snackbar = true;
                             this.email = '';
                             this.password = '';
