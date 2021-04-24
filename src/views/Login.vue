@@ -70,6 +70,8 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+
 // import axios from 'axios'
     export default {
         data: () => ({
@@ -77,6 +79,9 @@
             password: 'abbas123',
             snackbar: false
         }),
+        computed: {
+            ...mapGetters(["isAuthenticated"])
+        },
         methods: {
             goToRegister(){
                 this.$router.push({name : 'Register'})
@@ -95,14 +100,15 @@
                         .then((res) => {
                             resolve(res);
                             if (this.isAuthenticated) {
-                            const { query } = this.$router.currentRoute
-                            this.$router.push(query.redirect ? query.redirect : '/')
+                                console.log("aa");
+                                const { query } = this.$router.currentRoute
+                                this.$router.push(query.redirect ? query.redirect : '/')
                             }
                         })
                         .catch((err) => {
                             this.snackbar = true;
-                            // this.username = '';
-                            // this.password = '';
+                            this.email = '';
+                            this.password = '';
                             reject(err);
                         });
                     });
