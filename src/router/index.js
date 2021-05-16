@@ -2,40 +2,50 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store/index'
 import Login from '../views/Login'
-import Register from '../views/Register'
+import Register from "../views/Register";
+import ForgetPass from "../views/ForgetPass";
 import Home from '../views/Home'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: {
-      requiresAuth: false,
-      isOnlyPublic: true
-    }
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
-    meta: {
-      requiresAuth: false,
-      isOnlyPublic: true
-    }
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    meta: {
-      requiresAuth: true,
-      isOnlyPublic: false
-    },
-  }
-]
+	{
+		path: "/login",
+		name: "Login",
+		component: Login,
+		meta: {
+			requiresAuth: false,
+			isOnlyPublic: true,
+		},
+	},
+	{
+		path: "/register",
+		name: "Register",
+		component: Register,
+		meta: {
+			requiresAuth: false,
+			isOnlyPublic: true,
+		},
+	},
+	{
+		path: "/forgetPass",
+		name: "ForgetPassword",
+		component: ForgetPass,
+		meta: {
+			requiresAuth: false,
+			isOnlyPublic: true,
+		},
+	},
+	{
+		path: "/",
+		name: "Home",
+		component: Home,
+		meta: {
+			requiresAuth: true,
+			isOnlyPublic: false,
+		},
+	},
+];
 
 const router = new VueRouter({
   mode: 'history',

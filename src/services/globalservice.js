@@ -16,40 +16,40 @@ axios.interceptors.request.use((config) => {
 const globalService = {
     login(credentials) {
         return new Promise((resolve, reject) => {
-            axios.post("/auth/signIn", {
-                email: credentials.email,
-                password: credentials.password
-            })
-              .then((res) => {
-                if (res.data.user.token) {
-                  resolve(res.data.user);
-                }
-              })
-              .catch((err) => {
-                reject(err);
-              }
-          );
+            axios
+							.post("/auth/login", {
+								email: credentials.email,
+								password: credentials.password,
+							})
+							.then((res) => {
+								if (res.data.user.token) {
+									resolve(res.data.user);
+								}
+							})
+							.catch((err) => {
+								reject(err);
+							});
         });
     },
     register(credentials) {
+        console.log(credentials);
         return new Promise((resolve, reject) => {
-            axios.post("/auth/signup", {
-                firstName: credentials.firstName,
-                lastName: credentials.lastName,
-                email: credentials.email,
-                password: credentials.password
-            })
-              .then((res) => {
-                console.log('registered');
-                if (res.data.user.token) {
-                  resolve(res.data.user);
-                }
-              })
-              .catch((err) => {
-                  console.log('register failed');
-                reject(err);
-              }
-          );
+            axios
+							.post("/auth/register", {
+								userName: credentials.username,
+								email: credentials.email,
+								password: credentials.password,
+							})
+							.then((res) => {
+								console.log("registered");
+								if (res.data.user.token) {
+									resolve(res.data.user);
+								}
+							})
+							.catch((err) => {
+								console.log("register failed");
+								reject(err);
+							});
         });
     },
     logout() {
@@ -62,7 +62,23 @@ const globalService = {
                 reject(err);
               });
         });
-      },
+    },
+    forgetPass(email){
+      return new Promise((resolve, reject) => {
+				axios
+					.post("/auth/forgetPassword", {
+            email,
+          })
+					.then((res) => {
+            console.log("email send");
+						resolve(res);
+					})
+					.catch((err) => {
+            console.log("email was not sent");
+						reject(err);
+					});
+			});
+    }
 }
 
 export default globalService;

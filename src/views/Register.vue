@@ -27,11 +27,7 @@
                         <form @submit.prevent="submit()">
                             <div class="form-group icon-input mb-3">
                                 <i class="font-sm ti-user text-grey-500 pe-0"></i>
-                                <input v-model="firstname" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="First Name">                        
-                            </div>
-                            <div class="form-group icon-input mb-3">
-                                <i class="font-sm ti-user text-grey-500 pe-0"></i>
-                                <input v-model="lastname" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Last Name">                        
+                                <input v-model="username" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Username">                        
                             </div>
                             <div class="form-group icon-input mb-3">
                                 <i class="font-sm ti-email text-grey-500 pe-0"></i>
@@ -88,11 +84,10 @@
         data: () => ({
             snackbarText: "xanalari",
             snackbar: false,
-            firstname: 'abbas',
-            lastname: 'abbas',
-            email: 'b@b.com',
-            password: '123',
-            rePassword: '123'
+            username: 'abbasmurad',
+            email: 'abbasmurad@code.edu.az',
+            password: '1234567',
+            rePassword: '1234567'
         }),
         computed: {
             ...mapGetters(["isAuthenticated"])
@@ -102,8 +97,7 @@
                 this.$router.push({name : 'Login'})
             },
             async submit(){
-                if (this.firstname.length < 1 || 
-                    this.lastname.length < 1 || 
+                if (this.username.length < 1 || 
                     this.email.length < 1 || 
                     this.password.length < 1 || 
                     this.rePassword.length < 1) 
@@ -118,8 +112,7 @@
                         return new Promise((resolve, reject) => {
                             this.$store
                             .dispatch("register", {
-                                firstName:this.firstname,
-                                lastName:this.lastname,
+                                username:this.username,
                                 email:this.email,
                                 password:this.password
                             })
