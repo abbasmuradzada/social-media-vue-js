@@ -13,7 +13,8 @@
                     Anthony Daugloi
                     <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span>
                 </h4>
-                <v-btn @click="deletePost(post.id)" class="ms-auto">Sil</v-btn>
+                <!-- <h1>{{post._id}}</h1> -->
+                <v-btn @click="deletePost(post._id)" class="ms-auto">Sil</v-btn>
                 <!-- <a class="ms-auto" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> -->
             </div>
             
@@ -78,7 +79,6 @@ export default {
         //     });
         // },
         deletePost(id){
-            console.log(id);
             globalservice.deleteRequest(id)
                 .then(() => {
                     this.snackbarText = "Post Ugurla Silindi"
