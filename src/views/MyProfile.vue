@@ -75,16 +75,6 @@ export default {
         //         });
         //     });
         // },
-        getPosts(){
-            globalservice.getAllPosts(this.email)
-                .then((res) => {
-                    this.posts = res.data.posts
-                })
-                .catch((err) => {
-                    console.log(err);
-                    console.log("test");
-                })
-        },
         deletePost(id){
             globalservice.deleteRequest(id)
                 .then(() => {
@@ -98,14 +88,14 @@ export default {
         }
     },
     created(){
-        this.getPosts();
-            globalservice.getOwnPosts()
-                .then((res) => {
-                    console.log(res);
-                })
-                .catch(() => {
-                    console.log("ugursuz postlars");
-                })
+        globalservice.getOwnPosts()
+            .then((res) => {
+                this.posts = res.data.posts
+            })
+            .catch((err) => {
+                console.log(err);
+                console.log("test");
+            })
     }
 }
 </script>

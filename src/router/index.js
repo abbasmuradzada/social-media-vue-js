@@ -4,7 +4,10 @@ import store from '../store/index'
 import Login from '../views/Login'
 import Register from "../views/Register";
 import ForgetPass from "../views/ForgetPass";
-import Home from '../views/Home'
+import Main from '../views/Main';
+import Home from "../views/Home";
+import Create from "../views/Create";
+import MyProfile from "../views/MyProfile";
 
 Vue.use(VueRouter)
 
@@ -38,12 +41,45 @@ const routes = [
 	},
 	{
 		path: "/",
-		name: "Home",
-		component: Home,
+		name: "Main",
+		component: Main,
 		meta: {
 			requiresAuth: true,
 			isOnlyPublic: false,
 		},
+		children: [
+			{ 	
+				path: '/',
+				redirect: '/home'
+			},
+			{
+				path: "/home",
+				name: "Home",
+				component: Home,
+				meta: {
+					requiresAuth: true,
+					isOnlyPublic: false,
+				},
+			},
+			{
+				path: "/myprofile",
+				name: "MyProfile",
+				component: MyProfile,
+				meta: {
+					requiresAuth: true,
+					isOnlyPublic: false,
+				},
+			},
+			{
+				path: "/create",
+				name: "Create",
+				component: Create,
+				meta: {
+					requiresAuth: true,
+					isOnlyPublic: false,
+				},
+			},
+		],
 	},
 ];
 

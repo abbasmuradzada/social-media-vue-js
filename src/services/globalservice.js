@@ -3,14 +3,14 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 axios.interceptors.request.use((config) => {
-    if (typeof window === "undefined") {
-      return config;
-    }
-    const token = window.localStorage.getItem("userToken");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
+	if (typeof window === "undefined") {
+		return config;
+	}
+	const token = window.localStorage.getItem("userToken");
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`;
+	}
+	return config;
 });
 
 const globalService = {
@@ -82,12 +82,48 @@ const globalService = {
 		return new Promise((resolve, reject) => {
 			axios
 				.get("/post")
-          .then((res) => {
-            resolve(res);
-          })
-          .catch((err) => {
-            reject(err);
-          });
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+	deleteRequest(id) {
+		return new Promise((resolve, reject) => {
+			axios
+				.delete(`/post/${id}`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+	getOwnPosts() {
+		return new Promise((resolve, reject) => {
+			axios
+				.get("/post/myProfile")
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+	createPost(credentials) {
+		return new Promise((resolve, reject) => {
+			axios
+				.post("/post", credentials)
+				.then((res) => {
+					resolve(res)
+				})
+				.catch((err) => {
+					reject(err);
+				});
 		});
 	},
 };
