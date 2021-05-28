@@ -11,23 +11,25 @@
                 </figure>
                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">
                     Anthony Daugloi
-                    <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500"
-                        >2 hour ago</span
-                    >
+                    <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span>
                 </h4>
+                <v-btn @click="deletePost(post.id)" class="ms-auto">Sil</v-btn>
+                <!-- <a class="ms-auto" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> -->
             </div>
+            
             <div class="card-body p-0 me-lg-5">
                 <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">
                     {{ post.content }}
                 </p>
             </div>
-            <div class="card-body d-block p-0 mb-3">
+            <div v-if="post.type !== 'text'" class="card-body d-block p-0 mb-3">
                 <div class="row ps-2 pe-2">
                     <div class="col-sm-12 p-1">
                         <img :src="post.postContent" class="rounded-3 w-100" alt="image" />
                     </div>
                 </div>
             </div>
+            
             <div class="card-body d-flex p-0">
                 <a
                     href="#"
@@ -76,6 +78,7 @@ export default {
         //     });
         // },
         deletePost(id){
+            console.log(id);
             globalservice.deleteRequest(id)
                 .then(() => {
                     this.snackbarText = "Post Ugurla Silindi"
@@ -94,7 +97,6 @@ export default {
             })
             .catch((err) => {
                 console.log(err);
-                console.log("test");
             })
     }
 }

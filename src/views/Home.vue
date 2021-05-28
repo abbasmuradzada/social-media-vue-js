@@ -21,7 +21,7 @@
                     {{ post.content }}
                 </p>
             </div>
-            <div class="card-body d-block p-0 mb-3">
+            <div v-if="post.type !== 'text'" class="card-body d-block p-0 mb-3">
                 <div class="row ps-2 pe-2">
                     <div class="col-sm-12 p-1">
                         <img :src="post.postContent" class="rounded-3 w-100" alt="image" />

@@ -119,7 +119,7 @@ const globalService = {
 			axios
 				.post("/post", credentials)
 				.then((res) => {
-					resolve(res)
+					resolve(res);
 				})
 				.catch((err) => {
 					reject(err);
