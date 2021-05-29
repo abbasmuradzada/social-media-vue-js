@@ -27,12 +27,12 @@ export default {
 		create() {
 			let data = new FormData();
 			data.append("content", this.data.content);
-			data.append("type", this.data.type);
+			data.append("type", this.data.image ? 'photo' : 'text');
 			data.append("image", this.data.image);
 			globalservice
 				.createPost(data)
-				.then((res) => {
-					console.log(res);
+				.then(() => {
+					this.$router.push('home')
 				})
 				.catch((err) => {
 					console.log(err);

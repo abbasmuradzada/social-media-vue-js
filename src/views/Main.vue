@@ -157,9 +157,9 @@
                 </div>
             </div>
             
-
-            <a class="p-0 ms-3 menu-icon"><img src="../assets/images/profile-4.png" alt="user" class="w40 mt--1"></a>
             
+            <a class="p-0 ms-3 menu-icon"><img src="../assets/images/profile-4.png" alt="user" class="w40 mt--1"></a>
+            <v-btn @click="logout">logout</v-btn>
         </div>
         <!-- navigation top -->
 
@@ -596,14 +596,23 @@ export default {
         posts: []
     }),
     methods: {
-        goToMyProfile(){
-            this.$router.push('/myprofile')
-            // this.$router.push({name : 'MyProfile'})
+        // goToMyProfile(){
+        //     this.$router.push('/myprofile')
+        // },
+        // goToHome(){
+        //     this.$router.push('/home')
+        // },
+        logout(){
+            return new Promise((resolve, reject) => {
+                this.$store.dispatch("logout", this.$router)
+                .then((res) => {
+                    resolve(res);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+            });
         },
-        goToHome(){
-            this.$router.push('/home')
-            // this.$router.push({name : 'Home'})
-        }
     }
     // computed: {
     //   ...mapGetters(["userInfo"])

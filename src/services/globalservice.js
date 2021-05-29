@@ -102,6 +102,18 @@ const globalService = {
 				});
 		});
 	},
+	likeOrUnlike(id) {
+		return new Promise((resolve, reject) => {
+			axios
+				.post(`/post/likeOrUnlike/${id}`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
 	getOwnPosts() {
 		return new Promise((resolve, reject) => {
 			axios
