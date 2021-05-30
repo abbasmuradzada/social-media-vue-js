@@ -90,7 +90,7 @@ const globalService = {
 				});
 		});
 	},
-	deleteRequest(id) {
+	deletePost(id) {
 		return new Promise((resolve, reject) => {
 			axios
 				.delete(`/post/${id}`)
@@ -126,10 +126,49 @@ const globalService = {
 				});
 		});
 	},
+	getOwnUser() {
+		return new Promise((resolve, reject) => {
+			axios
+				.get("/user/ownProfile")
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
 	createPost(credentials) {
 		return new Promise((resolve, reject) => {
 			axios
 				.post("/post", credentials)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+	getSinglePost(id) {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`/post/${id}`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+	updatePost(credentials) {
+		return new Promise((resolve, reject) => {
+			axios
+				.put("/post/update", {
+					_id: credentials.id,
+					content: credentials.content,
+				})
 				.then((res) => {
 					resolve(res);
 				})

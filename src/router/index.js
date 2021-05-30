@@ -7,7 +7,12 @@ import ForgetPass from "../views/ForgetPass";
 import Main from '../views/Main';
 import Home from "../views/Home";
 import Create from "../views/Create";
+import Update from "../views/Update";
 import MyProfile from "../views/MyProfile";
+/**
+ * 
+ */
+
 
 Vue.use(VueRouter)
 
@@ -48,9 +53,9 @@ const routes = [
 			isOnlyPublic: false,
 		},
 		children: [
-			{ 	
-				path: '/',
-				redirect: '/home'
+			{
+				path: "/",
+				redirect: "/home",
 			},
 			{
 				path: "/home",
@@ -74,6 +79,15 @@ const routes = [
 				path: "/create",
 				name: "Create",
 				component: Create,
+				meta: {
+					requiresAuth: true,
+					isOnlyPublic: false,
+				},
+			},
+			{
+				path: "/update/:id",
+				name: "Update",
+				component: Update,
 				meta: {
 					requiresAuth: true,
 					isOnlyPublic: false,

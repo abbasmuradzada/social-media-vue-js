@@ -10,11 +10,14 @@
                     />
                 </figure>
                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">
-                    Anthony Daugloi
-                    <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span>
+                    {{myUser.userName}}
+                    <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.createdAt}}</span>
                 </h4>
                 <!-- <h1>{{post._id}}</h1> -->
-                <v-btn @click="deletePost(post._id)" class="ms-auto">Sil</v-btn>
+                <router-link class="ms-auto" :to="{ name: 'Update', params: { id: post._id} }">
+                    <v-btn class="ms-auto mr-3">Yenile</v-btn>
+                </router-link>
+                <v-btn @click="deletePost(post._id)">Sil</v-btn>
                 <!-- <a class="ms-auto" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> -->
             </div>
             
@@ -61,25 +64,15 @@ import globalservice from '../services/globalservice'
 import { mapGetters } from 'vuex'
 export default {
     data: () => ({
-        posts: []
+        posts: [],
+        myUser: null
     }),
     computed: {
-      ...mapGetters(["userInfo"])
+      ...mapGetters(["userId"])
     },
     methods: {
-        // logout(){
-        //     return new Promise((resolve, reject) => {
-        //         this.$store.dispatch("logout", this.$router)
-        //         .then((res) => {
-        //             resolve(res);
-        //         })
-        //         .catch((err) => {
-        //             reject(err);
-        //         });
-        //     });
-        // },
         deletePost(id){
-            globalservice.deleteRequest(id)
+            globalservice.deletePost(id)
                 .then(() => {
                     this.snackbarText = "Post Ugurla Silindi"
                     this.snackbar = true
@@ -95,8 +88,16 @@ export default {
             .then((res) => {
                 this.posts = res.data.posts
             })
-            .catch((err) => {
-                console.log(err);
+            .catch(() => {
+                //err
+            })
+
+        globalservice.getOwnUser()
+            .then((res) => {
+                this.myUser = res.data.user
+            })
+            .catch(() => {
+                //err
             })
     }
 }

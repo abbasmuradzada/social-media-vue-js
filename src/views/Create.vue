@@ -1,16 +1,15 @@
 <template>
-	<form @submit.prevent="create()">
-		<input
-			v-model="data.content"
-			class="m-5 style2-input ps-5 form-control text-grey-900 font-xss ls-3"
-		/>
-		<v-file-input 
-			@change="changeType"
-			v-model="data.image"
-			type="file">
-		</v-file-input>
-		<button type="submit">create</button>
-	</form>
+	<div>
+		<form @submit.prevent="create()">
+			<input
+				v-model="data.content"
+				class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+			/>
+			<v-file-input @change="changeType" v-model="data.image" type="file">
+			</v-file-input>
+			<button type="submit">create</button>
+		</form>
+	</div>
 </template>
 
 <script>
@@ -18,21 +17,21 @@ import globalservice from "../services/globalservice";
 export default {
 	data: () => ({
 		data: {
-			content: '',
+			content: "",
 			type: "photo",
 			image: null,
-		}
+		},
 	}),
 	methods: {
 		create() {
 			let data = new FormData();
 			data.append("content", this.data.content);
-			data.append("type", this.data.image ? 'photo' : 'text');
+			data.append("type", this.data.image ? "photo" : "text");
 			data.append("image", this.data.image);
 			globalservice
 				.createPost(data)
 				.then(() => {
-					this.$router.push('home')
+					this.$router.push("home");
 				})
 				.catch((err) => {
 					console.log(err);
