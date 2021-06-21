@@ -35,26 +35,28 @@
             </div>
             
             <div class="card-body d-flex p-0">
-                <a
-                    href="#"
-                    class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"
-                    ><i
-                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"
-                    ></i>
-                    <i
-                        class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"
-                    ></i
-                    >{{ post.__v }} Like</a
-                >
-                <a
-                    href="#"
-                    class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"
-                    ><i
-                        class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"
-                    ></i
-                    ><span class="d-none-xss">{{ post.commentCount }} Comment</span></a
-                >
-            </div>
+				<a
+					class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"
+				>
+					<i
+						class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"
+					></i>
+					<!-- <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i> -->
+
+					<v-btn @click="likeOrUnlike(post._id)" mr-2 color="red">{{
+						(post.likesFrom.indexOf(userId) != -1 ? "unlike " : "like ") +
+							post.likesFrom.length
+					}}</v-btn>
+				</a>
+				<a
+					class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"
+				>
+					<i
+						class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"
+					></i>
+					<span class="d-none-xss">{{ post.commentCount }} Comment</span>
+				</a>
+			</div>
         </div>
     </div>    
 </template>
@@ -75,13 +77,39 @@ export default {
             globalservice.deletePost(id)
                 .then(() => {
                     this.snackbarText = "Post Ugurla Silindi"
-                    this.snackbar = true
+                    console.log("silindi");
+                    // this.snackbar = true
+                    const index = this.posts.findIndex(post => post._id === id);
+                    // this.posts[index].content = 'deyishdirildi';
+                    console.log(this.posts[index].content);
                 })
                 .catch(() => {
+                    console.log("salam");
+                    const index = this.posts.findIndex(post => post._id === id);
+
+                    this.posts[index] = null;
+                    console.log(this.posts);
                     // this.snackbarText = "Bu mailde account movcud deyil"
                     // this.snackbar = true
                 })
-        }
+        },
+        likeOrUnlike(id) {
+			globalservice
+				.likeOrUnlike(id)
+				.then(() => {
+                    const index = this.posts.findIndex(post => post._id === id);
+                    if (this.posts[index].likesFrom.indexOf(this.userId) === -1) {
+                        this.posts[index].likesFrom.push(this.userId)
+                    }else{
+                        console.log(this.posts[index].postedUser[0]._id);
+                        this.posts[index].likesFrom = this.posts[index].likesFrom.filter((postedId) => postedId !== this.userId)
+                    }
+				})
+				.catch(() => {
+					// this.snackbarText = "Bu mailde account movcud deyil"
+					// this.snackbar = true
+				});
+		},
     },
     created(){
         globalservice.getOwnPosts()
