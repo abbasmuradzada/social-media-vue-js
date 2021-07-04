@@ -1,17 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store/index'
-import Login from '../views/Login'
-import Register from "../views/Register";
-import ForgetPass from "../views/ForgetPass";
-import Main from '../views/Main';
-import Home from "../views/Home";
-import Create from "../views/Create";
-import Update from "../views/Update";
-import MyProfile from "../views/MyProfile";
-/**
- * 
- */
+const Login = () => import(/* webpackChunkName: "login" */ '../views/Login')
+const Register = () => import(/* webpackChunkName: "register" */ '../views/Register')
+const ForgetPass = () => import(/* webpackChunkName: "forget-password" */ '../views/ForgetPass')
+const Main = () => import(/* webpackChunkName: "main" */ '../views/Main')
+const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
+const Create = () => import(/* webpackChunkName: "create" */ '../views/Create')
+const Update = () => import(/* webpackChunkName: "update" */ '../views/Update')
+const MyProfile = () => import(/* webpackChunkName: "my-profile" */ '../views/MyProfile')
 
 
 Vue.use(VueRouter)
