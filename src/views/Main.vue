@@ -24,7 +24,7 @@
             <router-link to="/home" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="cursor-pointer feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></router-link>
             <a class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
             <router-link to="/create" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="cursor-pointer feather-plus font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></router-link>
-            <router-link to="/myprofile" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="cursor-pointer feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></router-link>
+            <router-link to="/profile" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="cursor-pointer feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></router-link>
             <a class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
 
             <a class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
