@@ -51,10 +51,6 @@ const routes = [
 			isOnlyPublic: false,
 		},
 		children: [
-			// {
-			// 	path: "/",
-			// 	redirect: "/",
-			// },
 			{
 				path: "/",
 				name: "example",
@@ -107,7 +103,7 @@ const routes = [
 				],
 			},
 			{
-				path: "/profile",
+				path: "/:username",
 				name: "Profile",
 				component: MyProfile,
 				meta: {
