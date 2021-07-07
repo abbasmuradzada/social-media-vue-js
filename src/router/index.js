@@ -9,6 +9,7 @@ const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
 const Create = () => import(/* webpackChunkName: "create" */ '../views/Create')
 const Update = () => import(/* webpackChunkName: "update" */ '../views/Update')
 const MyProfile = () => import(/* webpackChunkName: "my-profile" */ '../views/MyProfile')
+const MainLayout = () => import(/* webpackChunkName: "main-layout" */ '../views/MainLayout')
 
 
 Vue.use(VueRouter)
@@ -50,44 +51,68 @@ const routes = [
 			isOnlyPublic: false,
 		},
 		children: [
+			// {
+			// 	path: "/",
+			// 	redirect: "/",
+			// },
 			{
 				path: "/",
-				redirect: "/home",
-			},
-			{
-				path: "/home",
-				name: "Home",
-				component: Home,
+				name: "example",
+				component: MainLayout,
 				meta: {
 					requiresAuth: true,
 					isOnlyPublic: false,
 				},
+				children: [
+					{
+						path: "/",
+						redirect: "/home",
+					},
+					{
+						path: "/home",
+						name: "Home",
+						component: Home,
+						meta: {
+							requiresAuth: true,
+							isOnlyPublic: false,
+						},
+					},
+					{
+						path: "/myprofile",
+						name: "MyProfile",
+						component: MyProfile,
+						meta: {
+							requiresAuth: true,
+							isOnlyPublic: false,
+						},
+					},
+					{
+						path: "/create",
+						name: "Create",
+						component: Create,
+						meta: {
+							requiresAuth: true,
+							isOnlyPublic: false,
+						},
+					},
+					{
+						path: "/update/:id",
+						name: "Update",
+						component: Update,
+						meta: {
+							requiresAuth: true,
+							isOnlyPublic: false,
+						},
+					},
+				],
 			},
 			{
-				path: "/myprofile",
-				name: "MyProfile",
+				path: "/profile",
+				name: "Profile",
 				component: MyProfile,
 				meta: {
-					requiresAuth: true,
 					isOnlyPublic: false,
-				},
-			},
-			{
-				path: "/create",
-				name: "Create",
-				component: Create,
-				meta: {
 					requiresAuth: true,
-					isOnlyPublic: false,
-				},
-			},
-			{
-				path: "/update/:id",
-				name: "Update",
-				component: Update,
-				meta: {
-					requiresAuth: true,
-					isOnlyPublic: false,
 				},
 			},
 		],

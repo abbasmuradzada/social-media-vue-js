@@ -207,10 +207,11 @@
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left">
                     <div class="row">
-                        <div class="col-xl-8 col-xxl-9 col-lg-8">
+                    <router-view></router-view>
+                        <!-- <div class="col-xl-8 col-xxl-9 col-lg-8">
                             <router-view></router-view>
-                        </div>               
-                        <div class="col-xl-4 col-xxl-3 col-lg-4 ps-lg-0">
+                        </div>                -->
+                        <!-- <div class="col-xl-4 col-xxl-3 col-lg-4 ps-lg-0">
                             <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
                                 <div class="card-body d-flex align-items-center p-4">
                                     <h4 class="fw-700 mb-0 font-xssss text-grey-900">Friend Request</h4>
@@ -334,7 +335,7 @@
                                 </div>
                                  
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
