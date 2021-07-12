@@ -74,15 +74,6 @@ const routes = [
 						},
 					},
 					{
-						path: "/myprofile",
-						name: "MyProfile",
-						component: MyProfile,
-						meta: {
-							requiresAuth: true,
-							isOnlyPublic: false,
-						},
-					},
-					{
 						path: "/create",
 						name: "Create",
 						component: Create,
@@ -103,7 +94,7 @@ const routes = [
 				],
 			},
 			{
-				path: "/:username",
+				path: "/profile/:id",
 				name: "Profile",
 				component: MyProfile,
 				meta: {

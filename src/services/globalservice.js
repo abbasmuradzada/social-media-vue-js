@@ -138,6 +138,20 @@ const globalService = {
 				});
 		});
 	},
+	getSingleUser(id) {
+		console.log(id);
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`/user/${id}`)
+				.then((res) => {
+					console.log("test 123");
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
 	createPost(credentials) {
 		return new Promise((resolve, reject) => {
 			axios
@@ -154,6 +168,18 @@ const globalService = {
 		return new Promise((resolve, reject) => {
 			axios
 				.get(`/post/${id}`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+	getPostOfUser() {
+		return new Promise((resolve, reject) => {
+			axios
+				.get("/post/postsOfSubs")
 				.then((res) => {
 					resolve(res);
 				})

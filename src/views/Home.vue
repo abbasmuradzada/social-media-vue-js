@@ -6,13 +6,17 @@
 			class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3"
 		>
 			<div class="card-body p-0 d-flex">
-				<figure class="avatar me-3">
-					<img
-						:src="post.postedUser[0].profilePicture"
-						alt="image"
-						class="shadow-sm rounded-circle w45"
-					/>
-				</figure>
+				<router-link
+					:to="{ name: 'Profile', params: { id: post.postedUser[0]._id } }"
+				>
+					<figure class="avatar me-3">
+						<img
+							:src="post.postedUser[0].profilePicture"
+							alt="image"
+							class="shadow-sm rounded-circle w45"
+						/>
+					</figure>
+				</router-link>
 				<h4 class="fw-700 text-grey-900 font-xssss mt-1">
 					Anthony Daugloi
 					<span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{
@@ -78,7 +82,7 @@ export default {
 				.getAllPosts(this.email)
 				.then((res) => {
 					this.posts = res.data.posts;
-                    this.posts.map(user => user)
+					this.posts.map((user) => user);
 				})
 				.catch(() => {
 					// console.log(err);
@@ -89,13 +93,15 @@ export default {
 			globalservice
 				.likeOrUnlike(id)
 				.then(() => {
-					const index = this.posts.findIndex(post => post._id === id);
-                    if (this.posts[index].likesFrom.indexOf(this.userId) === -1) {
-                        this.posts[index].likesFrom.push(this.userId)
-                    }else{
-                        console.log(this.posts[index].postedUser[0]._id);
-                        this.posts[index].likesFrom = this.posts[index].likesFrom.filter((postedId) => postedId !== this.userId)
-                    }
+					const index = this.posts.findIndex((post) => post._id === id);
+					if (this.posts[index].likesFrom.indexOf(this.userId) === -1) {
+						this.posts[index].likesFrom.push(this.userId);
+					} else {
+						console.log(this.posts[index].postedUser[0]._id);
+						this.posts[index].likesFrom = this.posts[index].likesFrom.filter(
+							(postedId) => postedId !== this.userId
+						);
+					}
 				})
 				.catch(() => {
 					// this.snackbarText = "Bu mailde account movcud deyil"

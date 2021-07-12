@@ -3,7 +3,7 @@
 		<div class="col-lg-12">
 			<div class="card w-100 border-0 p-0 bg-white shadow-xss rounded-xxl">
 				<div class="card-body h250 p-0 rounded-xxl overflow-hidden m-3">
-					<img src="../assets/images/u-bg.jpg" alt="image" />
+					<img :src="myUser.backgroundPicture" alt="image" />
 				</div>
 				<div class="card-body p-0 position-relative">
 					<figure
@@ -17,15 +17,16 @@
 						/>
 					</figure>
 					<h4 class="fw-700 font-sm mt-2 mb-lg-5 mb-4 pl-15">
-						{{myUser.userName}}
+						{{ myUser.userName }}
 						<span class="fw-500 font-xssss text-grey-500 mt-1 mb-3 d-block">
-							{{myUser.email}}	
+							{{ myUser.email }}
 						</span>
 					</h4>
 					<div
 						class="d-flex align-items-center justify-content-center position-absolute-md right-15 top-0 me-2"
 					>
 						<a
+							v-if="userId !== this.$route.params.id"
 							href="#"
 							class="d-none d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3"
 							>Add Friend</a
@@ -588,15 +589,27 @@ export default {
 			.catch(() => {
 				//err
 			});
-
-		globalservice
-			.getOwnUser()
-			.then((res) => {
-				this.myUser = res.data.user;
-			})
-			.catch(() => {
-				//err
-			});
+		// globalservice
+		// 	.getPostOfUser()
+		// 	.then((res) => console.log(res.data))
+		// 	.catch(() => {});
+		if (this.userId === this.$route.params.id) {
+			globalservice
+				.getOwnUser()
+				.then((res) => {
+					this.myUser = res.data.user;
+				})
+				.catch(() => {});
+		} else {
+			globalservice
+				.getSingleUser(this.$route.params.id)
+				.then((res) => {
+					this.myUser = res.data.user;
+				})
+				.catch(() => {
+					//err
+				});
+		}
 	},
 };
 </script>
