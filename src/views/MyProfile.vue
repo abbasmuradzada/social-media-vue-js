@@ -26,10 +26,10 @@
 						class="d-flex align-items-center justify-content-center position-absolute-md right-15 top-0 me-2"
 					>
 						<a
+							@click="sendOrRemoveSubscribe(myUser._id)"
 							v-if="userId !== this.$route.params.id"
-							href="#"
-							class="d-none d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3"
-							>Add Friend</a
+							class="d-none cursor-pointer d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3"
+							>{{followStatus}}</a
 						>
 						<a
 							href="#"
@@ -528,6 +528,7 @@ export default {
 	data: () => ({
 		posts: [],
 		myUser: null,
+		followStatus: 'FOLLOW'
 	}),
 	computed: {
 		...mapGetters(["userId"]),
@@ -577,6 +578,18 @@ export default {
 				.catch(() => {
 					// this.snackbarText = "Bu mailde account movcud deyil"
 					// this.snackbar = true
+				});
+		},
+		sendOrRemoveSubscribe(id) {
+			console.log(id);
+			globalservice
+				.sendOrRemoveSubscribtionRequest(id)
+				.then((res) => {
+					if(res.data.follow === "following") this.followStatus = 'UNFOLLOW'
+					if(res.data.follow === "false") this.followStatus = 'FOLLOW'
+				})
+				.catch((err) => {
+					console.log(err);
 				});
 		},
 	},

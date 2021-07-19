@@ -203,6 +203,19 @@ const globalService = {
 				});
 		});
 	},
+
+	sendOrRemoveSubscribtionRequest(id) {
+		return new Promise((resolve, reject) => {
+			axios
+				.post(`/subscription/toUser/${id}`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
 };
 
 export default globalService;
