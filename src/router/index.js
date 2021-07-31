@@ -11,6 +11,7 @@ const Update = () => import(/* webpackChunkName: "update" */ '../views/Update')
 const MyProfile = () => import(/* webpackChunkName: "my-profile" */ '../views/MyProfile')
 const MainLayout = () => import(/* webpackChunkName: "main-layout" */ '../views/MainLayout')
 const FollowList = () => import(/* webpackChunkName: "main-layout" */ '../views/FollowList')
+const FollowerList = () => import(/* webpackChunkName: "main-layout" */ '../views/FollowerList')
 
 
 Vue.use(VueRouter)
@@ -107,6 +108,15 @@ const routes = [
 				path: "/followlist",
 				name: "FollowList",
 				component: FollowList,
+				meta: {
+					isOnlyPublic: false,
+					requiresAuth: true,
+				},
+			},
+			{
+				path: "/followerlist",
+				name: "FollowerList",
+				component: FollowerList,
 				meta: {
 					isOnlyPublic: false,
 					requiresAuth: true,

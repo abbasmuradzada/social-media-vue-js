@@ -160,17 +160,24 @@
 			</div>
 		</div>
 		<div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
-			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
-				<div class="card-body border-0">
-					<div class="row">
-						<h4 class="font-xsss d-block ml-3 fw-700">
-							{{ myUser.followersCount }} Follower
-						</h4>
+			<router-link :to="{ name: 'FollowerList' }">
+				<div
+					class="cursor-pointer card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3"
+				>
+					<div class="card-body border-0">
+						<div class="row">
+							<h4 class="font-xsss d-block ml-3 fw-700">
+								{{ myUser.followersCount }} Follower
+							</h4>
+						</div>
 					</div>
 				</div>
-			</div>
+			</router-link>
+
 			<router-link :to="{ name: 'FollowList' }">
-				<div class="cursor-pointer card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+				<div
+					class="cursor-pointer card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3"
+				>
 					<div class="card-body border-0">
 						<div class="row">
 							<h4 class="font-xsss d-block ml-3 fw-700">
@@ -180,7 +187,9 @@
 					</div>
 				</div>
 			</router-link>
-			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+			<div
+				class="cursor-pointer card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3"
+			>
 				<div class="card-body border-0">
 					<div class="row">
 						<h4 class="font-xsss d-block ml-3 fw-700">
