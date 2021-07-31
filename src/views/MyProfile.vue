@@ -29,7 +29,7 @@
 							@click="sendOrRemoveSubscribe(myUser._id)"
 							v-if="userId !== this.$route.params.id"
 							class="d-none cursor-pointer d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3"
-							>{{followStatus}}</a
+							>{{ followStatus }}</a
 						>
 						<a
 							href="#"
@@ -161,30 +161,29 @@
 		</div>
 		<div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
 			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
-				<div class="card-body p-3 border-0">
+				<div class="card-body border-0">
 					<div class="row">
-						<div class="col-3">
-							<div class="chart-container w50 h50">
-								<div
-									class="chart position-relative"
-									data-percent="78"
-									data-bar-color="#a7d212"
-								>
-									<span class="percent fw-700 font-xsss" data-after="%"
-										>78</span
-									>
-								</div>
-							</div>
-						</div>
-						<div class="col-8 ps-1">
-							<h4 class="font-xsss d-block fw-700 mt-2 mb-0">
-								Advanced Python Sass
-								<span class="float-right mt-2 font-xsssss text-grey-500"
-									>87%</span
-								>
-							</h4>
-							<p class="font-xssss fw-600 text-grey-500 lh-26 mb-0">Designer</p>
-						</div>
+						<h4 class="font-xsss d-block ml-3 fw-700">
+							{{ myUser.followersCount }} Follower
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+				<div class="card-body border-0">
+					<div class="row">
+						<h4 class="font-xsss d-block ml-3 fw-700">
+							{{ myUser.followsCount }} Follow
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+				<div class="card-body border-0">
+					<div class="row">
+						<h4 class="font-xsss d-block ml-3 fw-700">
+							{{ myUser.postsCount }} Post
+						</h4>
 					</div>
 				</div>
 			</div>
@@ -462,7 +461,7 @@
 					<h4 class="fw-700 text-grey-900 font-xssss mt-1">
 						{{ myUser.userName }}
 						<span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{
-							post.createdAt
+							post.createdAt | moment("from", "now")
 						}}</span>
 					</h4>
 					<!-- <h1>{{post._id}}</h1> -->
@@ -528,7 +527,7 @@ export default {
 	data: () => ({
 		posts: [],
 		myUser: null,
-		followStatus: 'FOLLOW'
+		followStatus: "FOLLOW",
 	}),
 	computed: {
 		...mapGetters(["userId"]),
@@ -585,8 +584,14 @@ export default {
 			globalservice
 				.sendOrRemoveSubscribtionRequest(id)
 				.then((res) => {
-					if(res.data.follow === "following") this.followStatus = 'UNFOLLOW'
-					if(res.data.follow === "false") this.followStatus = 'FOLLOW'
+					if (res.data.follow === "following") {
+						this.followStatus = "UNFOLLOW";
+						this.myUser.followersCount ++
+					}
+					if (res.data.follow === "false") {
+						this.followStatus = "FOLLOW";
+						this.myUser.followersCount --
+					}
 				})
 				.catch((err) => {
 					console.log(err);

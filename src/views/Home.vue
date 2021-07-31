@@ -18,9 +18,9 @@
 					</figure>
 				</router-link>
 				<h4 class="fw-700 text-grey-900 font-xssss mt-1">
-					Anthony Daugloi
+					{{post.postedUser[0].userName}}
 					<span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{
-						post.createdAt
+						post.createdAt | moment("from", "now")
 					}}</span>
 				</h4>
 			</div>
