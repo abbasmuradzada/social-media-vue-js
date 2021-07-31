@@ -10,7 +10,7 @@ const Create = () => import(/* webpackChunkName: "create" */ '../views/Create')
 const Update = () => import(/* webpackChunkName: "update" */ '../views/Update')
 const MyProfile = () => import(/* webpackChunkName: "my-profile" */ '../views/MyProfile')
 const MainLayout = () => import(/* webpackChunkName: "main-layout" */ '../views/MainLayout')
-const FollowerList = () => import(/* webpackChunkName: "main-layout" */ '../views/FollowerList')
+const FollowList = () => import(/* webpackChunkName: "main-layout" */ '../views/FollowList')
 
 
 Vue.use(VueRouter)
@@ -105,8 +105,8 @@ const routes = [
 			},
 			{
 				path: "/followlist",
-				name: "FollowerList",
-				component: FollowerList,
+				name: "FollowList",
+				component: FollowList,
 				meta: {
 					isOnlyPublic: false,
 					requiresAuth: true,

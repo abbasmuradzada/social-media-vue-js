@@ -5,7 +5,7 @@
 				<div class="col-xl-12">
 					<div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
 						<div class="card-body d-flex align-items-center p-0">
-							<h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Badge</h2>
+							<h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">My Follow List</h2>
 							<div class="search-form-2 ms-auto">
 								<i class="ti-search font-xss"></i>
 								<input
@@ -14,11 +14,6 @@
 									placeholder="Search here."
 								/>
 							</div>
-							<a
-								href="#"
-								class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3"
-								><i class="feather-filter font-xss text-grey-500"></i
-							></a>
 						</div>
 					</div>
 
@@ -74,26 +69,9 @@
 											</h4>
 										</li>
 									</ul>
-									<ul
-										class="d-flex align-items-center justify-content-center mt-1"
-									>
-										<li class="m-1">
-											<img src="../assets/images/top-student.svg" alt="icon" />
-										</li>
-										<li class="m-1">
-											<img src="../assets/images/onfire.svg" alt="icon" />
-										</li>
-										<li class="m-1">
-											<img src="../assets/images/challenge-medal.svg" alt="icon" />
-										</li>
-										<li class="m-1">
-											<img src="../assets/images/fast-graduate.svg" alt="icon" />
-										</li>
-									</ul>
 									<a
-										href="#"
-										class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white"
-										>FOLLOW</a
+										class="salam mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-primary-gradiant font-xsssss fw-700 ls-lg text-white"
+										>{{followText}}</a
 									>
 								</div>
 							</div>
@@ -110,6 +88,7 @@ import globalservice from "../services/globalservice";
 export default {
 	data: () => ({
 		followings: null,
+        followText: 'UNFOLLOW'
 	}),
 	created() {
 		globalservice.getMyFollowing().then((res) => {
@@ -117,10 +96,12 @@ export default {
 			this.followings = res.data.follows
             console.log(this.followings);
 		});
-		globalservice.getMyFollowers().then(() => {
-			// console.log(res.data.followers);
-			// this.followings =
-		});
 	},
 };
 </script>
+
+<style lang="scss" scoped>
+    .salam{
+        background-color: #1e74fd !important;
+    }
+</style>

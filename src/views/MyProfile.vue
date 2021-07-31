@@ -169,15 +169,17 @@
 					</div>
 				</div>
 			</div>
-			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
-				<div class="card-body border-0">
-					<div class="row">
-						<h4 class="font-xsss d-block ml-3 fw-700">
-							{{ myUser.followsCount }} Follow
-						</h4>
+			<router-link :to="{ name: 'FollowList' }">
+				<div class="cursor-pointer card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+					<div class="card-body border-0">
+						<div class="row">
+							<h4 class="font-xsss d-block ml-3 fw-700">
+								{{ myUser.followsCount }} Follow
+							</h4>
+						</div>
 					</div>
 				</div>
-			</div>
+			</router-link>
 			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
 				<div class="card-body border-0">
 					<div class="row">
@@ -586,11 +588,11 @@ export default {
 				.then((res) => {
 					if (res.data.follow === "following") {
 						this.followStatus = "UNFOLLOW";
-						this.myUser.followersCount ++
+						this.myUser.followersCount++;
 					}
 					if (res.data.follow === "false") {
 						this.followStatus = "FOLLOW";
-						this.myUser.followersCount --
+						this.myUser.followersCount--;
 					}
 				})
 				.catch((err) => {
