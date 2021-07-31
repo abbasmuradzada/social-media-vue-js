@@ -216,6 +216,32 @@ const globalService = {
 				});
 		});
 	},
+
+	getMyFollowers(){
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`/subscription/followers`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
+
+	getMyFollowing() {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`/subscription/following`)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err) => {
+					reject(err);
+				});
+		});
+	},
 };
 
 export default globalService;
