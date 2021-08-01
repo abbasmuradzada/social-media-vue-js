@@ -634,6 +634,7 @@ export default {
 				.getSingleUser(this.$route.params.id)
 				.then((res) => {
 					this.myUser = res.data.user;
+					this.followStatus = res.data.isSubscribe ? "FOLLOW" : "UNFOLLOW"
 				})
 				.catch(() => {
 					//err

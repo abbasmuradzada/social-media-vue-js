@@ -50,7 +50,7 @@
 											{{ follow.user_from[0].userName }}
 										</h4>
 										<p class="fw-500 font-xssss text-grey-500 mt-0 mb-3">
-											support@gmail.com
+											{{ follow.user_from[0].email }}
 										</p>
 									</router-link>
 									<ul
@@ -58,16 +58,16 @@
 									>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												500+
+												{{ follow.user_from[0].postsCount }}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
-													>Connections</span
+													>Post</span
 												>
 											</h4>
 										</li>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												88.7 k
+												{{ follow.user_from[0].followersCount }}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Follower</span
@@ -76,7 +76,7 @@
 										</li>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												1,334
+												{{ follow.user_from[0].followsCount }}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Followings</span
@@ -87,7 +87,7 @@
 									<a
 									@click="followOrUnfollow(follow.user_from[0]._id, index)"
 										class="salam mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-primary-gradiant font-xsssss fw-700 ls-lg text-white"
-										>{{ follow.isFollowing ? "UNFOLLOW" : "FOLLOW" }}</a
+										>{{ follow.isFollowing ? "FOLLOW" : "UNFOLLOW" }}</a
 									>
 								</div>
 							</div>

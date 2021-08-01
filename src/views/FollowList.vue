@@ -46,7 +46,7 @@
 											{{ follow.userTo.userName }}
 										</h4>
 										<p class="fw-500 font-xssss text-grey-500 mt-0 mb-3">
-											support@gmail.com
+											{{follow.userTo.email}}
 										</p>
 									</router-link>
 									<ul
@@ -54,16 +54,16 @@
 									>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												500+
+												{{follow.userTo.postsCount}}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
-													>Connections</span
+													>Post</span
 												>
 											</h4>
 										</li>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												88.7 k
+												{{follow.userTo.followersCount}}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Follower</span
@@ -72,7 +72,7 @@
 										</li>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												1,334
+												{{follow.userTo.followsCount}}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Followings</span
