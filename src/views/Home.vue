@@ -8,7 +8,7 @@
       <div class="card-body p-0 d-flex">
         <router-link
           :to="{
-            name: 'Profile',
+            name: post.postedUser[0]._id == userId ? 'MyProfile' : 'Profile',
             params: { userName: post.postedUser[0].userName },
             query: { id: post.postedUser[0]._id },
           }"

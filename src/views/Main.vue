@@ -125,7 +125,7 @@
         ></router-link>
         <router-link
           :to="{
-            name: 'Profile',
+            name: 'MyProfile',
             params: { userName: userName },
             query: { id: userId },
           }"

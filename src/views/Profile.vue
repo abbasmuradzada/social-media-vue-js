@@ -22,7 +22,7 @@
 							{{ myUser.email }}
 						</span>
 					</h4>
-					<!-- <div
+					<div
 						class="
               d-flex
               align-items-center
@@ -131,7 +131,7 @@
 								</h4>
 							</div>
 						</div>
-					</div> -->
+					</div>
 				</div>
 
 				<div class="card-body d-block w-100 shadow-none mb-0 p-0 border-top-xs">
@@ -443,262 +443,55 @@
 					>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-8 col-xxl-9 col-lg-8">
-			<div
-				class="
-          card
-          w-100
-          shadow-xss
-          rounded-xxl
-          border-0
-          ps-4
-          pt-4
-          pe-4
-          pb-3
-          mb-3
-          mt-3
-        "
-			>
-				<div class="card-body p-0">
-					<span
-						@click="createPost"
-						class="
-              font-xssss
-              fw-600
-              text-grey-500
-              card-body
-              p-0
-              d-flex
-              align-items-center
-              cursor-pointer
-            "
-						><i
-							class="
-                btn-round-sm
-                font-xs
-                text-primary
-                feather-edit-3
-                me-2
-                bg-greylight
-              "
-						></i
-						>Create Post</span
-					>
-				</div>
-				<div class="card-body p-0 mt-3 position-relative">
-					<figure class="avatar position-absolute ms-2 mt-1 top-5">
-						<img
-							:src="myUser.profilePicture"
-							alt="image"
-							class="shadow-sm rounded-circle w30"
-						/>
-					</figure>
-					<textarea
-						v-model="data.content"
-						name="message"
-						class="
-              h100
-              bor-0
-              w-100
-              rounded-xxl
-              p-2
-              ps-5
-              font-xssss
-              text-grey-500
-              fw-500
-              border-light-md
-              theme-dark-bg
-            "
-						cols="30"
-						rows="10"
-						placeholder="What's on your mind?"
-					></textarea>
-				</div>
-				<div class="card-body d-flex p-0 mt-0 align-items-center">
-					<i class="font-md text-success feather-image me-2"></i>
-					<v-file-input
-						:style="{
-							margin: '0 20px 0 0',
-						}"
-						@change="changeType"
-						v-model="data.uploadObject"
-						placeholder="Photo / Video"
-						prepend-icon=""
-						type="file"
-					>
-					</v-file-input>
-					<a
-						href="#"
-						class="ms-auto"
-						id="dropdownMenu8"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false"
-						><i
-							class="
-                ti-more-alt
-                text-grey-900
-                btn-round-md
-                bg-greylight
-                font-xss
-              "
-						></i
-					></a>
-					<div
-						class="
-              dropdown-menu dropdown-menu-end
-              p-4
-              rounded-xxl
-              border-0
-              shadow-lg
-            "
-						aria-labelledby="dropdownMenu8"
-					>
-						<div class="card-body p-0 d-flex">
-							<i class="feather-bookmark text-grey-500 me-3 font-lg"></i>
-							<h4 class="fw-600 text-grey-900 font-xssss mt-0 me-4">
-								Save Link
-								<span class="d-block font-xsssss fw-500 mt-1 lh-3 text-grey-500"
-									>Add this to your saved items</span
-								>
-							</h4>
-						</div>
-						<div class="card-body p-0 d-flex mt-2">
-							<i class="feather-alert-circle text-grey-500 me-3 font-lg"></i>
-							<h4 class="fw-600 text-grey-900 font-xssss mt-0 me-4">
-								Hide Post
-								<span class="d-block font-xsssss fw-500 mt-1 lh-3 text-grey-500"
-									>Save to your saved items</span
-								>
-							</h4>
-						</div>
-						<div class="card-body p-0 d-flex mt-2">
-							<i class="feather-alert-octagon text-grey-500 me-3 font-lg"></i>
-							<h4 class="fw-600 text-grey-900 font-xssss mt-0 me-4">
-								Hide all from Group
-								<span class="d-block font-xsssss fw-500 mt-1 lh-3 text-grey-500"
-									>Save to your saved items</span
-								>
-							</h4>
-						</div>
-						<div class="card-body p-0 d-flex mt-2">
-							<i class="feather-lock text-grey-500 me-3 font-lg"></i>
-							<h4 class="fw-600 mb-0 text-grey-900 font-xssss mt-0 me-4">
-								Unfollow Group
-								<span class="d-block font-xsssss fw-500 mt-1 lh-3 text-grey-500"
-									>Save to your saved items</span
-								>
-							</h4>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div
-				v-for="post in posts"
-				:key="post"
-				class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3"
-			>
-				<div class="card-body p-0 d-flex">
-					<figure class="avatar me-3">
-						<img
-							:src="post.postedUser[0].profilePicture"
-							alt="image"
-							class="shadow-sm rounded-circle w45"
-						/>
-					</figure>
-					<h4 class="fw-700 text-grey-900 font-xssss mt-1">
-						{{ myUser.userName }}
-						<span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{
-							post.createdAt | moment("from", "now")
-						}}</span>
+			<div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
+				<div class="card-body d-flex align-items-center p-4">
+					<h4 class="fw-700 mb-0 font-xssss text-grey-900">Event</h4>
+					<a href="#" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+				</div>
+				<div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
+					<div class="bg-success me-2 p-3 rounded-xxl">
+						<h4 class="fw-700 font-lg ls-3 lh-1 text-white mb-0">
+							<span class="ls-1 d-block font-xsss text-white fw-600">FEB</span
+							>22
+						</h4>
+					</div>
+					<h4 class="fw-700 text-grey-900 font-xssss mt-2">
+						Meeting with clients
+						<span class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500"
+							>41 madison ave, floor 24 new work, NY 10010</span
+						>
 					</h4>
-					<!-- <h1>{{post._id}}</h1> -->
-					<router-link
-						class="ms-auto"
-						:to="{ name: 'Update', params: { id: post._id } }"
-					>
-						<v-btn class="ms-auto mr-3">Yenile</v-btn>
-					</router-link>
-					<v-btn @click="deletePost(post._id)">Sil</v-btn>
-					<!-- <a class="ms-auto" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> -->
 				</div>
 
-				<div class="card-body p-0 me-lg-5">
-					<p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">
-						{{ post.content }}
-					</p>
-				</div>
-				<div v-if="post.type === 'photo'" class="card-body d-block p-0 mb-3">
-					<div class="row ps-2 pe-2">
-						<div class="col-sm-12 p-1">
-							<img
-								:src="post.postContent"
-								class="rounded-3 w-100"
-								alt="image"
-							/>
-						</div>
+				<div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
+					<div class="bg-warning me-2 p-3 rounded-xxl">
+						<h4 class="fw-700 font-lg ls-3 lh-1 text-white mb-0">
+							<span class="ls-1 d-block font-xsss text-white fw-600">APR</span
+							>30
+						</h4>
 					</div>
+					<h4 class="fw-700 text-grey-900 font-xssss mt-2">
+						Developer Programe
+						<span class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500"
+							>41 madison ave, floor 24 new work, NY 10010</span
+						>
+					</h4>
 				</div>
-				<div v-if="post.type === 'video'" class="card-body d-block p-0 mb-3">
-					<div class="row ps-2 pe-2">
-						<div class="col-sm-12 p-1">
-							<vuePlayer :src="post.postContent"> </vuePlayer>
-						</div>
+
+				<div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
+					<div class="bg-primary me-2 p-3 rounded-xxl">
+						<h4 class="fw-700 font-lg ls-3 lh-1 text-white mb-0">
+							<span class="ls-1 d-block font-xsss text-white fw-600">APR</span
+							>23
+						</h4>
 					</div>
-				</div>
-
-				<div class="card-body d-flex p-0">
-					<a
-						class="
-              emoji-bttn
-              d-flex
-              align-items-center
-              fw-600
-              text-grey-900 text-dark
-              lh-26
-              font-xssss
-              me-2
-            "
-					>
-						<i
-							class="
-                feather-thumbs-up
-                text-white
-                bg-primary-gradiant
-                me-1
-                btn-round-xs
-                font-xss
-              "
-						></i>
-						<!-- <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i> -->
-
-						<v-btn @click="likeOrUnlike(post._id)" mr-2 color="red">{{
-							(post.likesFrom.indexOf(userId) != -1 ? "unlike " : "like ") +
-								post.likesFrom.length
-						}}</v-btn>
-					</a>
-					<a
-						class="
-              d-flex
-              align-items-center
-              fw-600
-              text-grey-900 text-dark
-              lh-26
-              font-xssss
-            "
-					>
-						<i
-							class="
-                feather-message-circle
-                text-dark text-grey-900
-                btn-round-sm
-                font-lg
-              "
-						></i>
-						<span class="d-none-xss">{{ post.commentCount }} Comment</span>
-					</a>
+					<h4 class="fw-700 text-grey-900 font-xssss mt-2">
+						Aniversary Event
+						<span class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500"
+							>41 madison ave, floor 24 new work, NY 10010</span
+						>
+					</h4>
 				</div>
 			</div>
 		</div>
@@ -708,12 +501,13 @@
 <script>
 import globalservice from "../services/globalservice";
 import { mapGetters } from "vuex";
-import vuePlayer from "@algoz098/vue-player";
+// import vuePlayer from "@algoz098/vue-player";
 
 export default {
 	data: () => ({
 		posts: [],
 		myUser: null,
+		followStatus: "",
 		data: {
 			content: "",
 			type: "text",
@@ -721,110 +515,12 @@ export default {
 		},
 	}),
 	components: {
-		vuePlayer,
+		// vuePlayer,
 	},
 	computed: {
 		...mapGetters(["userId"]),
 	},
 	methods: {
-		createPost() {
-			let data = new FormData();
-			data.append("content", this.data.content);
-
-			if (this.data.uploadObject === null) {
-				data.append("type", "text");
-				return globalservice
-					.createPost(data)
-					.then(() => {
-						this.data.content = "";
-						globalservice
-							.getOwnPosts()
-							.then((res) => {
-								this.posts = res.data.posts;
-							})
-							.catch((err) => {
-								console.log(err);
-							});
-					})
-					.catch((err) => {
-						console.log(err);
-					});
-			}
-
-			if (this.data.type === "video") {
-				data.append("video", this.data.uploadObject);
-				data.append("type", this.data.type ?? "text");
-
-				return globalservice
-					.createVideoPost(data)
-					.then(() => {
-						this.data.content = "";
-						this.data.uploadObject = null;
-						globalservice
-							.getOwnPosts()
-							.then((res) => {
-								this.posts = res.data.posts;
-							})
-							.catch((err) => {
-								console.log(err);
-							});
-					})
-					.catch((err) => {
-						console.log(err);
-					});
-			}
-			data.append("image", this.data.uploadObject);
-			data.append("type", this.data.type ?? "text");
-
-			return globalservice
-				.createPost(data)
-				.then(() => {
-					this.data.content = "";
-					this.data.uploadObject = null;
-					globalservice
-						.getOwnPosts()
-						.then((res) => {
-							this.posts = res.data.posts;
-						})
-						.catch((err) => {
-							console.log(err);
-						});
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		},
-		changeType() {
-			this.data.type =
-				this.data.uploadObject.type === "video/mp4" ? "video" : "photo";
-		},
-		deletePost(id) {
-			globalservice
-				.deletePost(id)
-				.then(() => {
-					// this.snackbarText = "Post Ugurla Silindi";
-					// console.log("deleted succesfully");
-					// this.snackbar = true
-					// const index = this.posts.findIndex((post) => post._id === id);
-					// this.posts[index].content = 'deyishdirildi';
-					// console.log(this.posts[index].content);
-				})
-				.catch(() => {
-					console.log("delete fail");
-					// console.log("salam");
-
-					// this.snackbarText = "Bu mailde account movcud deyil"
-					// this.snackbar = true
-				})
-				.finally(() => {
-					const index = this.posts.findIndex((post) => post._id === id);
-					console.log(index);
-					console.log(this.posts[index].content);
-					this.posts = this.posts.filter((post) => post._id !== id);
-					// this.posts[index] = null;
-					// console.log(this.posts);
-				});
-		},
 		likeOrUnlike(id) {
 			globalservice
 				.likeOrUnlike(id)
@@ -844,23 +540,47 @@ export default {
 					// this.snackbar = true
 				});
 		},
+		sendOrRemoveSubscribe(id) {
+			console.log(id);
+			globalservice
+				.sendOrRemoveSubscribtionRequest(id)
+				.then((res) => {
+					if (res.data.follow === "following") {
+						this.followStatus = "UNFOLLOW";
+						this.myUser.followersCount++;
+					}
+					if (res.data.follow === "false") {
+						this.followStatus = "FOLLOW";
+						this.myUser.followersCount--;
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		},
 	},
 	created() {
-		console.log(this.$route.params);
+		// globalservice
+		//   .getOwnPosts()
+		//   .then((res) => {
+		//     this.posts = res.data.posts;
+		//   })
+		//   .catch(() => {
+		//     //err
+		//   });
+		// globalservice
+		// 	.getPostOfUser()
+		// 	.then((res) => console.log(res.data))
+		// 	.catch(() => {});
 		globalservice
-			.getOwnPosts()
+			.getSingleUser(this.$route.query.id)
 			.then((res) => {
-				this.posts = res.data.posts;
+				this.myUser = res.data.user;
+				this.followStatus = res.data.isSubscribe ? "FOLLOW" : "UNFOLLOW";
 			})
 			.catch(() => {
 				//err
 			});
-		globalservice
-			.getOwnUser()
-			.then((res) => {
-				this.myUser = res.data.user;
-			})
-			.catch(() => {});
 	},
 };
 </script>

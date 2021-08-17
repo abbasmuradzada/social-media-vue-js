@@ -12,6 +12,8 @@ const Create = () => import(/* webpackChunkName: "create" */ "../views/Create");
 const Update = () => import(/* webpackChunkName: "update" */ "../views/Update");
 const MyProfile = () =>
   import(/* webpackChunkName: "my-profile" */ "../views/MyProfile");
+const Profile = () =>
+  import(/* webpackChunkName: "profile" */ "../views/Profile");
 const MainLayout = () =>
   import(/* webpackChunkName: "main-layout" */ "../views/MainLayout");
 const FollowList = () =>
@@ -101,9 +103,18 @@ const routes = [
         ],
       },
       {
+        path: "/myprofile/:userName",
+        name: "MyProfile",
+        component: MyProfile,
+        meta: {
+          isOnlyPublic: false,
+          requiresAuth: true,
+        },
+      },
+      {
         path: "/profile/:userName",
         name: "Profile",
-        component: MyProfile,
+        component: Profile,
         meta: {
           isOnlyPublic: false,
           requiresAuth: true,
