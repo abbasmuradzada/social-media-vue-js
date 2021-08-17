@@ -8,14 +8,6 @@
 							<h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">
 								My Follower List
 							</h2>
-							<div class="search-form-2 ms-auto">
-								<i class="ti-search font-xss"></i>
-								<input
-									type="text"
-									class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0"
-									placeholder="Search here."
-								/>
-							</div>
 						</div>
 					</div>
 

@@ -175,73 +175,9 @@
                   ls-1
                   d-inline-block
                 "
-								href="#navtabs2"
-								data-toggle="tab"
-								>Membership</a
-							>
-						</li>
-						<li class="list-inline-item me-5">
-							<a
-								class="
-                  fw-700
-                  font-xssss
-                  text-grey-500
-                  pt-3
-                  pb-3
-                  ls-1
-                  d-inline-block
-                "
-								href="#navtabs3"
-								data-toggle="tab"
-								>Discussion</a
-							>
-						</li>
-						<li class="list-inline-item me-5">
-							<a
-								class="
-                  fw-700
-                  font-xssss
-                  text-grey-500
-                  pt-3
-                  pb-3
-                  ls-1
-                  d-inline-block
-                "
 								href="#navtabs4"
 								data-toggle="tab"
 								>Video</a
-							>
-						</li>
-						<li class="list-inline-item me-5">
-							<a
-								class="
-                  fw-700
-                  font-xssss
-                  text-grey-500
-                  pt-3
-                  pb-3
-                  ls-1
-                  d-inline-block
-                "
-								href="#navtabs3"
-								data-toggle="tab"
-								>Group</a
-							>
-						</li>
-						<li class="list-inline-item me-5">
-							<a
-								class="
-                  fw-700
-                  font-xssss
-                  text-grey-500
-                  pt-3
-                  pb-3
-                  ls-1
-                  d-inline-block
-                "
-								href="#navtabs1"
-								data-toggle="tab"
-								>Events</a
 							>
 						</li>
 						<li class="list-inline-item me-5">

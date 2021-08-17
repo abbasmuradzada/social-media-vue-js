@@ -8,7 +8,6 @@ const ForgetPass = () =>
   import(/* webpackChunkName: "forget-password" */ "../views/ForgetPass");
 const Main = () => import(/* webpackChunkName: "main" */ "../views/Main");
 const Home = () => import(/* webpackChunkName: "home" */ "../views/Home");
-const Create = () => import(/* webpackChunkName: "create" */ "../views/Create");
 const Update = () => import(/* webpackChunkName: "update" */ "../views/Update");
 const MyProfile = () =>
   import(/* webpackChunkName: "my-profile" */ "../views/MyProfile");
@@ -77,15 +76,6 @@ const routes = [
             path: "/home",
             name: "Home",
             component: Home,
-            meta: {
-              requiresAuth: true,
-              isOnlyPublic: false,
-            },
-          },
-          {
-            path: "/create",
-            name: "Create",
-            component: Create,
             meta: {
               requiresAuth: true,
               isOnlyPublic: false,
