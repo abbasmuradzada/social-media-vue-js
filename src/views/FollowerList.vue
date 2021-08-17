@@ -24,7 +24,8 @@
 									<router-link
 										:to="{
 											name: 'Profile',
-											params: { id: follow.user_from[0]._id },
+											params: { userName: follow.user_from[0].userName },
+											query: { id: follow.user_from[0]._id },
 										}"
 									>
 										<figure
@@ -77,7 +78,7 @@
 										</li>
 									</ul>
 									<a
-									@click="followOrUnfollow(follow.user_from[0]._id, index)"
+										@click="followOrUnfollow(follow.user_from[0]._id, index)"
 										class="salam mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-primary-gradiant font-xsssss fw-700 ls-lg text-white"
 										>{{ follow.isFollowing ? "FOLLOW" : "UNFOLLOW" }}</a
 									>
@@ -99,17 +100,15 @@ export default {
 	}),
 	methods: {
 		followOrUnfollow(id, index) {
-			globalservice
-				.sendOrRemoveSubscribtionRequest(id)
-				.then((res) => {
-					if (res.data.follow === 'false') {
-						this.followers[index].isFollowing = false	
-					}
+			globalservice.sendOrRemoveSubscribtionRequest(id).then((res) => {
+				if (res.data.follow === "false") {
+					this.followers[index].isFollowing = false;
+				}
 
-					if (res.data.follow === 'following') {
-						this.followers[index].isFollowing = true	
-					}
-				});
+				if (res.data.follow === "following") {
+					this.followers[index].isFollowing = true;
+				}
+			});
 		},
 	},
 	created() {

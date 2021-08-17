@@ -22,7 +22,11 @@
 							>
 								<div class="card-body d-block w-100 p-4 text-center">
 									<router-link
-										:to="{ name: 'Profile', params: { id: follow.userTo._id } }"
+										:to="{
+											name: 'Profile',
+											params: { userName: follow.userTo.userName },
+											query: { id: follow.userTo._id },
+										}"
 									>
 										<figure
 											class="avatar ms-auto me-auto mb-0 position-relative w90 z-index-1"
@@ -38,7 +42,7 @@
 											{{ follow.userTo.userName }}
 										</h4>
 										<p class="fw-500 font-xssss text-grey-500 mt-0 mb-3">
-											{{follow.userTo.email}}
+											{{ follow.userTo.email }}
 										</p>
 									</router-link>
 									<ul
@@ -46,7 +50,7 @@
 									>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												{{follow.userTo.postsCount}}
+												{{ follow.userTo.postsCount }}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Post</span
@@ -55,7 +59,7 @@
 										</li>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												{{follow.userTo.followersCount}}
+												{{ follow.userTo.followersCount }}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Follower</span
@@ -64,7 +68,7 @@
 										</li>
 										<li class="m-2">
 											<h4 class="fw-700 font-sm">
-												{{follow.userTo.followsCount}}
+												{{ follow.userTo.followsCount }}
 												<span
 													class="font-xsssss fw-500 mt-1 text-grey-500 d-block"
 													>Followings</span
