@@ -421,12 +421,12 @@
                 font-xss
               "
 						></i>
-						<!-- <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i> -->
+						<i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i>
 
-						<!-- <v-btn @click="likeOrUnlike(post._id)" mr-2 color="red">{{
+						<v-btn @click="likeOrUnlike(post._id)" mr-2 color="red">{{
 							(post.likesFrom.indexOf(userId) != -1 ? "unlike " : "like ") +
 								post.likesFrom.length
-						}}</v-btn> -->
+						}}</v-btn>
 					</a>
 					<a
 						class="
