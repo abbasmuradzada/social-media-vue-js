@@ -10,7 +10,6 @@
           :to="{
             name: post.postedUser[0]._id == userId ? 'MyProfile' : 'Profile',
             params: { userName: post.postedUser[0].userName },
-            query: { id: post.postedUser[0]._id },
           }"
         >
           <figure class="avatar me-3">
