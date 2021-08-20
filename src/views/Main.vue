@@ -100,7 +100,6 @@
 					:to="{
 						name: 'MyProfile',
 						params: { userName: userName },
-						query: { id: userId },
 					}"
 					class="p-2 text-center ms-0 menu-icon center-menu-icon"
 					><i
@@ -289,7 +288,7 @@
 				<div class="middle-sidebar-bottom">
 					<div class="middle-sidebar-left">
 						<div class="row">
-							<router-view></router-view>
+							<router-view :key="$route.fullPath"></router-view>
 							<!-- <div class="col-xl-8 col-xxl-9 col-lg-8">
                             <router-view></router-view>
                         </div>                -->
