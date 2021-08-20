@@ -144,7 +144,6 @@ const globalService = {
       axios
         .get(`/user/${id}`)
         .then((res) => {
-          console.log("test 123");
           resolve(res);
         })
         .catch((err) => {
@@ -246,6 +245,34 @@ const globalService = {
     return new Promise((resolve, reject) => {
       axios
         .get(`/subscription/following`)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+
+  getUserIdByUsername(userName) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`/user/getUserName`, {
+          userName,
+        })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+
+  getPostOfAnyUser(id) {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`/post/postsOfUser/${id}`)
         .then((res) => {
           resolve(res);
         })
