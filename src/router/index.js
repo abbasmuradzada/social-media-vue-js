@@ -8,6 +8,7 @@ const ForgetPass = () =>
   import(/* webpackChunkName: "forget-password" */ "../views/ForgetPass");
 const Main = () => import(/* webpackChunkName: "main" */ "../views/Main");
 const Home = () => import(/* webpackChunkName: "home" */ "../views/Home");
+const Settings = () => import(/* webpackChunkName: "home" */ "../views/Settings");
 const Update = () => import(/* webpackChunkName: "update" */ "../views/Update");
 const MyProfile = () =>
   import(/* webpackChunkName: "my-profile" */ "../views/MyProfile");
@@ -102,6 +103,15 @@ const routes = [
         },
       },
       {
+        path: "/settings",
+        name: "Settings",
+        component: Settings,
+        meta: {
+          requiresAuth: true,
+          isOnlyPublic: false,
+        },
+      },
+      {
         path: "/profile/:userName",
         name: "Profile",
         component: Profile,
@@ -130,6 +140,7 @@ const routes = [
       },
     ],
   },
+
 ];
 
 const router = new VueRouter({

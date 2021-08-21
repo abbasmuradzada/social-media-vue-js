@@ -204,7 +204,7 @@
 						alt="user"
 						class="w40 mt--1"
 				/></a>
-				<v-btn @click="logout">logout</v-btn>
+				<!-- <v-btn @click="logout">logout</v-btn> -->
 			</div>
 			<!-- navigation top -->
 
@@ -271,12 +271,20 @@
 							</div>
 							<ul class="mb-1">
 								<li class="logo d-none d-xl-block d-lg-block"></li>
-								<li class="cursor-pointer">
-									<a class="nav-content-bttn open-font h-auto pt-2 pb-2"
-										><i class="font-sm feather-settings me-3 text-grey-500"></i
-										><span>Settings</span></a
-									>
-								</li>
+								<router-link
+									:to="{
+										name: 'Settings',
+									}"
+								>
+									<li class="cursor-pointer">
+										<a class="nav-content-bttn open-font h-auto pt-2 pb-2"
+											><i
+												class="font-sm feather-settings me-3 text-grey-500"
+											></i
+											><span>Settings</span></a
+										>
+									</li>
+								</router-link>
 							</ul>
 						</div>
 					</div>
@@ -1220,18 +1228,18 @@ export default {
 		// goToHome(){
 		//     this.$router.push('/home')
 		// },
-		logout() {
-			return new Promise((resolve, reject) => {
-				this.$store
-					.dispatch("logout", this.$router)
-					.then((res) => {
-						resolve(res);
-					})
-					.catch((err) => {
-						reject(err);
-					});
-			});
-		},
+		// logout() {
+		// 	return new Promise((resolve, reject) => {
+		// 		this.$store
+		// 			.dispatch("logout", this.$router)
+		// 			.then((res) => {
+		// 				resolve(res);
+		// 			})
+		// 			.catch((err) => {
+		// 				reject(err);
+		// 			});
+		// 	});
+		// },
 	},
 	// computed: {
 	//   ...mapGetters(["userInfo"])
