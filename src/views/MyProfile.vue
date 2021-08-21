@@ -217,8 +217,15 @@
 				>
 					<div class="card-body border-0">
 						<div class="row">
-							<h4 class="font-xsss d-block ml-3 fw-700">
-								{{ myUser.followersCount }} Follower
+							<h4
+								class="profile-statictic-text font-xsss d-flex align-items-sm-center ml-3 fw-700"
+							>
+								<a class="text-center menu-icon chat-active-btn"
+									><i
+										class="profile-statictic-icon feather-users font-md text-black"
+									></i
+								></a>
+								<span class="mb-1">{{ myUser.followersCount }} Follower</span>
 							</h4>
 						</div>
 					</div>
@@ -240,8 +247,15 @@
 				>
 					<div class="card-body border-0">
 						<div class="row">
-							<h4 class="font-xsss d-block ml-3 fw-700">
-								{{ myUser.followsCount }} Follow
+							<h4
+								class="profile-statictic-text font-xsss d-flex align-items-sm-center ml-3 fw-700"
+							>
+								<a class="text-center menu-icon chat-active-btn"
+									><i
+										class="profile-statictic-icon feather-user-check font-md text-black"
+									></i
+								></a>
+								<span class="mb-1">{{ myUser.followsCount }} Follow</span>
 							</h4>
 						</div>
 					</div>
@@ -261,8 +275,15 @@
 			>
 				<div class="card-body border-0">
 					<div class="row">
-						<h4 class="font-xsss d-block ml-3 fw-700">
-							{{ myUser.postsCount }} Post
+						<h4
+							class=" profile-statictic-text font-xsss d-flex align-items-sm-center ml-3 fw-700"
+						>
+							<a class="text-center menu-icon chat-active-btn"
+								><i
+									class="profile-statictic-icon feather-list font-md text-black"
+								></i
+							></a>
+							<span class="mb-1">{{ myUser.postsCount }} Post</span>
 						</h4>
 					</div>
 				</div>
@@ -800,3 +821,13 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss" scoped>
+.profile-statictic-icon {
+	margin-right: 8px;
+}
+
+.profile-statictic-text {
+	margin-bottom: 0 !important;
+}
+</style>
