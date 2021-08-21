@@ -823,11 +823,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.profile-statictic-icon {
-	margin-right: 8px;
-}
-
-.profile-statictic-text {
-	margin-bottom: 0 !important;
+.profile-statictic {
+	&-icon {
+		margin-right: 8px;
+	}
+	&-text {
+		margin-bottom: 0 !important;
+	}
 }
 </style>
