@@ -3,10 +3,16 @@
 		<div class="middle-wrap">
 			<div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
 				<div class="card-body p-4 w-100 bg-current border-0 d-flex rounded-3">
-					<!-- <a href="default-settings.html" class="d-inline-block mt-2"
-						><i class="ti-arrow-left font-sm text-white"></i
-					></a> -->
-					<h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">
+					<router-link
+						:to="{
+							name: 'Settings',
+						}"
+					>
+						<a class="cursor-pointer pr-2 text-center menu-icon chat-active-btn"
+							><i class="feather-arrow-left font-xl text-white"></i
+						></a>
+					</router-link>
+					<h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-1">
 						Change Password
 					</h4>
 				</div>
@@ -64,7 +70,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-    .bg-current{
-        background-color: #05f !important;
-    }
+.bg-current {
+	background-color: #05f !important;
+}
 </style>

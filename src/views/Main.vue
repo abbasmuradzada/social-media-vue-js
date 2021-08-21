@@ -195,9 +195,6 @@
 						</h6>
 					</div>
 				</div>
-				<a class="p-2 text-center ms-3 menu-icon chat-active-btn"
-					><i class="feather-message-square font-xl text-current"></i
-				></a>
 				<a class="p-0 ms-3 menu-icon"
 					><img
 						src="../assets/images/profile-4.png"
