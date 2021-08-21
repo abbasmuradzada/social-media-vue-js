@@ -382,7 +382,7 @@
 				<div class="card-body p-0 d-flex">
 					<figure class="avatar me-3">
 						<img
-							:src="post.postedUser[0].profilePicture"
+							:src="myUser.profilePicture"
 							alt="image"
 							class="shadow-sm rounded-circle w45"
 						/>
@@ -543,18 +543,19 @@ export default {
 				globalservice
 					.getSingleUser(idRes.data.id)
 					.then((res) => {
+						this.posts = res.data.posts;
 						this.myUser = res.data.user;
 						this.followStatus = res.data.isSubscribe ? "FOLLOW" : "UNFOLLOW";
 					})
 					.catch(() => {});
-				globalservice
-					.getPostOfAnyUser(idRes.data.id)
-					.then((res) => {
-						this.posts = res.data.posts;
-						console.log(this.posts);
-						console.log(res.data.posts);
-					})
-					.catch(() => {});
+				// globalservice
+				// 	.getPostOfAnyUser(idRes.data.id)
+				// 	.then((res) => {
+				// 		this.posts = res.data.posts;
+				// 		console.log(this.posts);
+				// 		console.log(res.data.posts);
+				// 	})
+				// 	.catch(() => {});
 			})
 			.catch(() => {});
 	},
