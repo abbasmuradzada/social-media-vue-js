@@ -24,7 +24,12 @@
 									<label class="mont-font fw-600 font-xssss"
 										>Current Password</label
 									>
-									<input type="text" name="comment-name" class="form-control" />
+									<input
+										v-model="prevPass"
+										type="text"
+										name="comment-name"
+										class="form-control"
+									/>
 								</div>
 							</div>
 
@@ -33,7 +38,12 @@
 									<label class="mont-font fw-600 font-xssss"
 										>Change Password</label
 									>
-									<input type="text" name="comment-name" class="form-control" />
+									<input
+										v-model="newPass"
+										type="text"
+										name="comment-name"
+										class="form-control"
+									/>
 								</div>
 							</div>
 						</div>
@@ -44,15 +54,23 @@
 									<label class="mont-font fw-600 font-xssss"
 										>Confirm Change Password</label
 									>
-									<input type="text" name="comment-name" class="form-control" />
+									<input
+										v-model="newPassCopy"
+										type="text"
+										name="comment-name"
+										class="form-control"
+									/>
 								</div>
 							</div>
 						</div>
+                        <div v-if="errMsg" class="row mb-2">
+                            <h2 class="text-red">{{errMsg}} </h2>
+                        </div>
 						<div class="row">
 							<div class="col-lg-12 mb-0">
 								<a
-									href="#"
-									class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block"
+									@click="changePassword()"
+									class="cursor-pointer bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block"
 									>Save</a
 								>
 							</div>
@@ -66,7 +84,33 @@
 </template>
 
 <script>
-export default {};
+import globalservice from "../services/globalservice";
+export default {
+	data: () => ({
+		prevPass: "",
+		newPass: "",
+		newPassCopy: "",
+		errMsg: null,
+	}),
+	methods: {
+		changePassword() {
+			if (this.newPass === this.newPassCopy) {
+				globalservice
+					.changePassword({
+						prevPassword: this.prevPass,
+						newPassword: this.newPass,
+					})
+					.then((res) => {
+						console.log(res);
+						this.errMsg = null;
+					})
+					.catch(() => (this.errMsg = "Previous password is not correct"));
+			} else {
+				this.errMsg = "Password and confirmation password are not same";
+			}
+		},
+	},
+};
 </script>
 
 <style lang="scss" scoped>

@@ -269,6 +269,22 @@ const globalService = {
     });
   },
 
+  changePassword(credentials) {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`/auth/changePassword`, {
+          oldPassword: credentials.prevPassword,
+          newPassword: credentials.newPassword,
+        })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+
   getPostOfAnyUser(id) {
     return new Promise((resolve, reject) => {
       axios
