@@ -17,7 +17,10 @@
 					</h4>
 				</div>
 				<div class="card-body p-lg-5 p-4 w-100 border-0">
-					<form action="#">
+					<div v-if="jobSucceeded" class="row">
+						<h1>Password Changed Succesfully!</h1>
+					</div>
+					<form v-else>
 						<div class="row">
 							<div class="col-lg-12 mb-3">
 								<div class="form-gorup">
@@ -63,9 +66,9 @@
 								</div>
 							</div>
 						</div>
-                        <div v-if="errMsg" class="row mb-2">
-                            <h2 class="text-red">{{errMsg}} </h2>
-                        </div>
+						<div v-if="errMsg" class="row mb-2">
+							<h2 class="text-red">{{ errMsg }}</h2>
+						</div>
 						<div class="row">
 							<div class="col-lg-12 mb-0">
 								<a
@@ -91,6 +94,7 @@ export default {
 		newPass: "",
 		newPassCopy: "",
 		errMsg: null,
+		jobSucceeded: false,
 	}),
 	methods: {
 		changePassword() {
@@ -103,6 +107,7 @@ export default {
 					.then((res) => {
 						console.log(res);
 						this.errMsg = null;
+						this.jobSucceeded = true;
 					})
 					.catch(() => (this.errMsg = "Previous password is not correct"));
 			} else {
