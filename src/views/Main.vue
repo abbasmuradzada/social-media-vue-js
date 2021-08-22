@@ -162,6 +162,7 @@
             </h6>
           </div>
 
+<<<<<<< HEAD
           <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
             <img
               src="../assets/images/user-7.png"
@@ -207,6 +208,50 @@
         <v-btn @click="logout">logout</v-btn>
       </div>
       <!-- navigation top -->
+=======
+					<div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
+						<img
+							src="../assets/images/user-7.png"
+							alt="user"
+							class="w40 position-absolute left-0"
+						/>
+						<h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">
+							Surfiya Zakir
+							<span class="text-grey-400 font-xsssss fw-600 float-right mt-1">
+								1 min</span
+							>
+						</h5>
+						<h6 class="text-grey-500 fw-500 font-xssss lh-4">
+							Mobile Apps UI Designer is require..
+						</h6>
+					</div>
+					<div class="card bg-transparent-card w-100 border-0 ps-5">
+						<img
+							src="../assets/images/user-6.png"
+							alt="user"
+							class="w40 position-absolute left-0"
+						/>
+						<h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">
+							Victor Exrixon
+							<span class="text-grey-400 font-xsssss fw-600 float-right mt-1">
+								30 sec</span
+							>
+						</h5>
+						<h6 class="text-grey-500 fw-500 font-xssss lh-4">
+							Mobile Apps UI Designer is require..
+						</h6>
+					</div>
+				</div>
+				<a class="p-0 ms-3 menu-icon"
+					><img
+						src="../assets/images/profile-4.png"
+						alt="user"
+						class="w40 mt--1"
+				/></a>
+				<!-- <v-btn @click="logout">logout</v-btn> -->
+			</div>
+			<!-- navigation top -->
+>>>>>>> 858c5d87288f566e13aca97a4f3769f83af5329d
 
       <!-- navigation left -->
       <nav class="navigation scroll-bar">
@@ -265,6 +310,7 @@
                 pt-3
                 pb-1
               "
+<<<<<<< HEAD
             >
               <div class="nav-caption fw-600 font-xssss text-grey-500">
                 <span></span> Account
@@ -292,6 +338,41 @@
             <div class="row">
               <router-view :key="$route.fullPath"></router-view>
               <!-- <div class="col-xl-8 col-xxl-9 col-lg-8">
+=======
+						>
+							<div class="nav-caption fw-600 font-xssss text-grey-500">
+								<span></span> Account
+							</div>
+							<ul class="mb-1">
+								<li class="logo d-none d-xl-block d-lg-block"></li>
+								<router-link
+									:to="{
+										name: 'Settings',
+									}"
+								>
+									<li class="cursor-pointer">
+										<a class="nav-content-bttn open-font h-auto pt-2 pb-2"
+											><i
+												class="font-sm feather-settings me-3 text-grey-500"
+											></i
+											><span>Settings</span></a
+										>
+									</li>
+								</router-link>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- navigation left -->
+			<!-- main content -->
+			<div class="main-content right-chat-active">
+				<div class="middle-sidebar-bottom">
+					<div class="middle-sidebar-left">
+						<div class="row">
+							<router-view :key="$route.fullPath"></router-view>
+							<!-- <div class="col-xl-8 col-xxl-9 col-lg-8">
+>>>>>>> 858c5d87288f566e13aca97a4f3769f83af5329d
                             <router-view></router-view>
                         </div>                -->
               <!-- <div class="col-xl-4 col-xxl-3 col-lg-4 ps-lg-0">
@@ -1209,6 +1290,7 @@
 // import globalservice from '../services/globalservice'
 import { mapGetters } from "vuex";
 export default {
+<<<<<<< HEAD
   data: () => ({
     posts: [],
   }),
@@ -1288,6 +1370,84 @@ export default {
   //                 // this.snackbar = true
   //             })
   // }
+=======
+	data: () => ({
+		posts: [],
+	}),
+	computed: {
+		...mapGetters(["userId", "userName"]),
+	},
+	methods: {
+		// goToMyProfile(){
+		//     this.$router.push('/myprofile')
+		// },
+		// goToHome(){
+		//     this.$router.push('/home')
+		// },
+		// logout() {
+		// 	return new Promise((resolve, reject) => {
+		// 		this.$store
+		// 			.dispatch("logout", this.$router)
+		// 			.then((res) => {
+		// 				resolve(res);
+		// 			})
+		// 			.catch((err) => {
+		// 				reject(err);
+		// 			});
+		// 	});
+		// },
+	},
+	// computed: {
+	//   ...mapGetters(["userInfo"])
+	// },
+	// methods: {
+	//     logout(){
+	//         return new Promise((resolve, reject) => {
+	//             this.$store.dispatch("logout", this.$router)
+	//             .then((res) => {
+	//                 resolve(res);
+	//             })
+	//             .catch((err) => {
+	//                 reject(err);
+	//             });
+	//         });
+	//     },
+	//     getPosts(){
+	//         globalservice.getAllPosts(this.email)
+	//             .then((res) => {
+	//                 this.posts = res.data.posts
+	//             })
+	//             .catch((err) => {
+	//                 console.log(err);
+	//                 console.log("test");
+	//             })
+	//     },
+	//     deletePost(id){
+	//         globalservice.deleteRequest(id)
+	//             .then(() => {
+	//                 this.snackbarText = "Post Ugurla Silindi"
+	//                 this.snackbar = true
+	//                 // this.email = ''
+	//             })
+	//             .catch(() => {
+	//                 // this.snackbarText = "Bu mailde account movcud deyil"
+	//                 // this.snackbar = true
+	//             })
+	//     }
+	// },
+	// created(){
+	//     this.getPosts();
+	//         globalservice.getOwnPosts()
+	//             .then((res) => {
+	//                 console.log(res);
+	//             })
+	//             .catch(() => {
+	//                 console.log("ugursuz postlars");
+	//                 // this.snackbarText = "Bu mailde account movcud deyil"
+	//                 // this.snackbar = true
+	//             })
+	// }
+>>>>>>> 858c5d87288f566e13aca97a4f3769f83af5329d
 };
 </script>
 
