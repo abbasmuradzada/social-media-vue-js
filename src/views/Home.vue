@@ -2,7 +2,7 @@
   <div>
     <div
       v-for="post in posts"
-      :key="post"
+      :key="post._id"
       class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3"
     >
       <div class="card-body p-0 d-flex">
@@ -46,56 +46,8 @@
           </div>
         </div>
       </div>
-      <div class="card-body d-flex p-0">
-        <a
-          class="
-            emoji-bttn
-            d-flex
-            align-items-center
-            fw-600
-            text-grey-900 text-dark
-            lh-26
-            font-xssss
-            me-2
-          "
-        >
-          <i
-            class="
-              feather-thumbs-up
-              text-white
-              bg-primary-gradiant
-              me-1
-              btn-round-xs
-              font-xss
-            "
-          ></i>
-          <!-- <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i> -->
-
-          <v-btn @click="likeOrUnlike(post._id)" mr-2 color="red">{{
-            (post.likesFrom.indexOf(userId) != -1 ? "unlike " : "like ") +
-            post.likesFrom.length
-          }}</v-btn>
-        </a>
-        <a
-          class="
-            d-flex
-            align-items-center
-            fw-600
-            text-grey-900 text-dark
-            lh-26
-            font-xssss
-          "
-        >
-          <i
-            class="
-              feather-message-circle
-              text-dark text-grey-900
-              btn-round-sm
-              font-lg
-            "
-          ></i>
-          <span class="d-none-xss">{{ post.commentCount }} Comment</span>
-        </a>
+      <div class="d-flex p-0 w-100">
+        <CommentSection :post="post" />
       </div>
     </div>
   </div>
@@ -106,13 +58,16 @@ import globalservice from "../services/globalservice";
 import { mapGetters } from "vuex";
 import moment from "moment";
 import vuePlayer from "@algoz098/vue-player";
+import CommentSection from "./CommentSection.vue";
 
 export default {
   data: () => ({
     posts: [],
+    commentSectionCheck: {},
   }),
   components: {
     vuePlayer,
+    CommentSection,
   },
   computed: {
     ...mapGetters(["userId"]),
@@ -127,6 +82,7 @@ export default {
         .then((res) => {
           this.posts = res.data.posts;
           this.posts.map((user) => user);
+          console.log(this.posts);
         })
         .catch(() => {
           // console.log(err);
@@ -160,6 +116,13 @@ export default {
       const hours = moment().diff(postDate, "hours");
       if (hours > 24) return moment(postDate).locale("az").format("LL");
       return postDate;
+    },
+
+    openCommentSection(postId) {
+      this.commentSectionCheck[`${postId}`] =
+        !this.commentSectionCheck[`${postId}`];
+
+      console.log(this.commentSectionCheck[`${postId}`]);
     },
   },
   created() {
