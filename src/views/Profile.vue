@@ -174,7 +174,7 @@
 			</div>
 		</div>
 		<div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
-			<router-link :to="{ name: 'FollowerList' }">
+			<router-link :to="{ name: 'FollowerList', params: {userName: myUser.userName} }">
 				<div
 					class="
             cursor-pointer
@@ -204,7 +204,7 @@
 				</div>
 			</router-link>
 
-			<router-link :to="{ name: 'FollowList' }">
+			<router-link :to="{ name: 'FollowList', params: {userName: myUser.userName} }">
 				<div
 					class="
             cursor-pointer
@@ -543,19 +543,11 @@ export default {
 				globalservice
 					.getSingleUser(idRes.data.id)
 					.then((res) => {
-						this.posts = res.data.posts;
+						this.posts = res.data.posts.reverse();
 						this.myUser = res.data.user;
 						this.followStatus = res.data.isSubscribe ? "FOLLOW" : "UNFOLLOW";
 					})
 					.catch(() => {});
-				// globalservice
-				// 	.getPostOfAnyUser(idRes.data.id)
-				// 	.then((res) => {
-				// 		this.posts = res.data.posts;
-				// 		console.log(this.posts);
-				// 		console.log(res.data.posts);
-				// 	})
-				// 	.catch(() => {});
 			})
 			.catch(() => {});
 	},

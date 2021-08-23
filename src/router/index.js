@@ -133,18 +133,18 @@ const routes = [
         },
       },
       {
-        path: "/followlist",
-        name: "FollowList",
-        component: FollowList,
+        path: "/profile/:userName/followerlist",
+        name: "FollowerList",
+        component: FollowerList,
         meta: {
           isOnlyPublic: false,
           requiresAuth: true,
         },
       },
       {
-        path: "/followerlist",
-        name: "FollowerList",
-        component: FollowerList,
+        path: "/profile/:userName/followlist",
+        name: "FollowList",
+        component: FollowList,
         meta: {
           isOnlyPublic: false,
           requiresAuth: true,

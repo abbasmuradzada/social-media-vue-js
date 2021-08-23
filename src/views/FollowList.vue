@@ -25,7 +25,6 @@
 										:to="{
 											name: 'Profile',
 											params: { userName: follow.userTo.userName },
-											query: { id: follow.userTo._id },
 										}"
 									>
 										<figure
@@ -97,28 +96,16 @@ export default {
 	data: () => ({
 		followings: null,
 	}),
-	methods: {
-		followOrUnfollow(id, index) {
-			globalservice.sendOrRemoveSubscribtionRequest(id).then((res) => {
-				if (res.data.follow === "false") {
-					this.followings[index].isFollowing = false;
-				}
-
-				if (res.data.follow === "following") {
-					this.followings[index].isFollowing = true;
-				}
-				console.log(this.followings[index].isFollowing);
-			});
-		},
-	},
+	methods: {},
 	created() {
-		globalservice.getMyFollowing().then((res) => {
-			this.followings = res.data.follows;
-			this.followings.map((item) => {
-				item["isFollowing"] = true;
-				console.log(this.followings);
-			});
-		});
+		globalservice
+			.getUserIdByUsername(this.$route.params.userName)
+			.then((idRes) => {
+				globalservice.getFollowing(idRes.data.id).then((res) => {
+					this.followings = res.data.follows;
+				});
+			})
+			.catch(() => {});
 	},
 };
 </script>

@@ -25,7 +25,6 @@
 										:to="{
 											name: 'Profile',
 											params: { userName: follow.user_from[0].userName },
-											query: { id: follow.user_from[0]._id },
 										}"
 									>
 										<figure
@@ -112,10 +111,14 @@ export default {
 		},
 	},
 	created() {
-		globalservice.getMyFollowers().then((res) => {
-			this.followers = res.data.followers;
-			console.log(this.followers);
-		});
+		globalservice
+			.getUserIdByUsername(this.$route.params.userName)
+			.then((idRes) => {
+				globalservice.getFollowers(idRes.data.id).then((res) => {
+					this.followers = res.data.followers;
+				});
+			})
+			.catch(() => {});
 	},
 };
 </script>
