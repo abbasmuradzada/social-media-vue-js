@@ -543,19 +543,11 @@ export default {
 				globalservice
 					.getSingleUser(idRes.data.id)
 					.then((res) => {
-						this.posts = res.data.posts;
+						this.posts = res.data.posts.reverse();
 						this.myUser = res.data.user;
 						this.followStatus = res.data.isSubscribe ? "FOLLOW" : "UNFOLLOW";
 					})
 					.catch(() => {});
-				// globalservice
-				// 	.getPostOfAnyUser(idRes.data.id)
-				// 	.then((res) => {
-				// 		this.posts = res.data.posts;
-				// 		console.log(this.posts);
-				// 		console.log(res.data.posts);
-				// 	})
-				// 	.catch(() => {});
 			})
 			.catch(() => {});
 	},

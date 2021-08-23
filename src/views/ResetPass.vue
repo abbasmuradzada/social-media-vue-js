@@ -29,7 +29,7 @@
 									>
 									<input
 										v-model="prevPass"
-										type="text"
+										type="password"
 										name="comment-name"
 										class="form-control"
 									/>
@@ -43,7 +43,7 @@
 									>
 									<input
 										v-model="newPass"
-										type="text"
+										type="password"
 										name="comment-name"
 										class="form-control"
 									/>
@@ -59,7 +59,7 @@
 									>
 									<input
 										v-model="newPassCopy"
-										type="text"
+										type="password"
 										name="comment-name"
 										class="form-control"
 									/>
