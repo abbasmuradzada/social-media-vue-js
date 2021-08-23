@@ -21,6 +21,8 @@ const FollowList = () =>
   import(/* webpackChunkName: "main-layout" */ "../views/FollowList");
 const FollowerList = () =>
   import(/* webpackChunkName: "main-layout" */ "../views/FollowerList");
+// const AccountSettings = () =>
+//   import(/* webpackChunkName: "main-layout" */ "../views/AccountSettings");
 
 Vue.use(VueRouter);
 
