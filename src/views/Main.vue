@@ -218,6 +218,7 @@
 								<router-link
 									:to="{
 										name: 'MyProfile',
+										params: { userName },
 									}"
 								>
 									<li class="cursor-pointer">

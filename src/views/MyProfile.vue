@@ -202,7 +202,9 @@
 			</div>
 		</div>
 		<div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
-			<router-link :to="{ name: 'FollowerList' }">
+			<router-link
+				:to="{ name: 'FollowerList', params: { userName, } }"
+			>
 				<div
 					class="
             cursor-pointer
@@ -232,7 +234,7 @@
 				</div>
 			</router-link>
 
-			<router-link :to="{ name: 'FollowList' }">
+			<router-link :to="{ name: 'FollowList', params: { userName, } }">
 				<div
 					class="
             cursor-pointer
@@ -681,7 +683,7 @@ export default {
 		vuePlayer,
 	},
 	computed: {
-		...mapGetters(["userId"]),
+		...mapGetters(["userId", "userName"]),
 	},
 	methods: {
 		createPost() {

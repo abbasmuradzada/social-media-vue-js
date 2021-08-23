@@ -228,10 +228,10 @@ const globalService = {
     });
   },
 
-  getMyFollowers() {
+  getFollowers(id) {
     return new Promise((resolve, reject) => {
       axios
-        .get(`/subscription/followers`)
+        .get(`/subscription/followers/${id}`)
         .then((res) => {
           resolve(res);
         })
@@ -241,10 +241,10 @@ const globalService = {
     });
   },
 
-  getMyFollowing() {
+  getFollowing(id) {
     return new Promise((resolve, reject) => {
       axios
-        .get(`/subscription/following`)
+        .get(`/subscription/following/${id}`)
         .then((res) => {
           resolve(res);
         })
