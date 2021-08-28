@@ -310,6 +310,60 @@ const globalService = {
         });
     });
   },
+  postComment(postId, comment) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`/comment/${postId}`, {
+          content: comment,
+        })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+  deleteComment(user, commentId) {
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(`/comment/own/${commentId}`, {
+          user,
+        })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+  editComment(commentId, content) {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`/comment/update/${commentId}`, {
+          content,
+        })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+  likeOrUnlikeComment(commentId) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`/comment/likeOrUnlike/${commentId}`)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
 };
 
 export default globalService;

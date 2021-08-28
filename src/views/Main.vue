@@ -78,43 +78,9 @@
                 w350
                 theme-dark-bg
               "
-<<<<<<< HEAD
             />
           </div>
         </form>
-        <router-link
-          to="/home"
-          class="p-2 text-center ms-3 menu-icon center-menu-icon"
-          ><i
-            class="
-              cursor-pointer
-              feather-home
-              font-lg
-              alert-primary
-              btn-round-lg
-              theme-dark-bg
-              text-current
-            "
-          ></i
-        ></router-link>
-        <router-link
-          :to="{
-            name: 'MyProfile',
-            params: { userName: userName },
-          }"
-          class="p-2 text-center ms-0 menu-icon center-menu-icon"
-          ><i
-            class="
-              cursor-pointer
-              feather-user
-              font-lg
-              bg-greylight
-              btn-round-lg
-              theme-dark-bg
-              text-grey-500
-            "
-          ></i
-        ></router-link>
         <a
           class="p-2 text-center ms-auto menu-icon"
           id="dropdownMenu3"
@@ -125,21 +91,6 @@
         ></a>
         <div
           class="
-=======
-						/>
-					</div>
-				</form>
-				<a
-					class="p-2 text-center ms-auto menu-icon"
-					id="dropdownMenu3"
-					data-bs-toggle="dropdown"
-					aria-expanded="false"
-					><span class="dot-count bg-warning"></span
-					><i class="feather-bell font-xl text-current"></i
-				></a>
-				<div
-					class="
->>>>>>> b6e54f953d96b55ee859be97de6bdede1be7933d
             dropdown-menu dropdown-menu-end
             p-4
             rounded-3
@@ -236,21 +187,26 @@
                 mb-2
                 mt-2
               "
-<<<<<<< HEAD
             >
               <div class="nav-caption fw-600 font-xssss text-grey-500">
                 <span>New </span>Feeds
               </div>
               <ul class="mb-1 top-content">
                 <li class="logo d-none d-xl-block d-lg-block"></li>
-                <li class="cursor-pointer">
-                  <a class="nav-content-bttn open-font"
-                    ><i
-                      class="feather-tv btn-round-md bg-blue-gradiant me-3"
-                    ></i
-                    ><span>Newsfeed</span></a
-                  >
-                </li>
+                <router-link
+                  :to="{
+                    name: 'Home',
+                  }"
+                >
+                  <li class="cursor-pointer">
+                    <a class="nav-content-bttn open-font"
+                      ><i
+                        class="feather-home btn-round-md bg-blue-gradiant me-3"
+                      ></i
+                      ><span>Home</span></a
+                    >
+                  </li>
+                </router-link>
                 <li class="cursor-pointer">
                   <a class="nav-content-bttn open-font"
                     ><i
@@ -259,63 +215,23 @@
                     ><span>Popular Groups</span></a
                   >
                 </li>
-                <li class="cursor-pointer">
-                  <a class="nav-content-bttn open-font"
-                    ><i
-                      class="feather-user btn-round-md bg-red-gradiant me-3"
-                    ></i
-                    ><span>My Profile</span></a
-                  >
-                </li>
+                <router-link
+                  :to="{
+                    name: 'MyProfile',
+                    params: { userName },
+                  }"
+                >
+                  <li class="cursor-pointer">
+                    <a class="nav-content-bttn open-font"
+                      ><i
+                        class="feather-user btn-round-md bg-red-gradiant me-3"
+                      ></i
+                      ><span>My Profile</span></a
+                    >
+                  </li>
+                </router-link>
               </ul>
             </div>
-=======
-						>
-							<div class="nav-caption fw-600 font-xssss text-grey-500">
-								<span>New </span>Feeds
-							</div>
-							<ul class="mb-1 top-content">
-								<li class="logo d-none d-xl-block d-lg-block"></li>
-								<router-link
-									:to="{
-										name: 'Home',
-									}"
-								>
-									<li class="cursor-pointer">
-										<a class="nav-content-bttn open-font"
-											><i
-												class="feather-home btn-round-md bg-blue-gradiant me-3"
-											></i
-											><span>Home</span></a
-										>
-									</li>
-								</router-link>
-								<li class="cursor-pointer">
-									<a class="nav-content-bttn open-font"
-										><i
-											class="feather-zap btn-round-md bg-mini-gradiant me-3"
-										></i
-										><span>Popular Groups</span></a
-									>
-								</li>
-								<router-link
-									:to="{
-										name: 'MyProfile',
-										params: { userName },
-									}"
-								>
-									<li class="cursor-pointer">
-										<a class="nav-content-bttn open-font"
-											><i
-												class="feather-user btn-round-md bg-red-gradiant me-3"
-											></i
-											><span>My Profile</span></a
-										>
-									</li>
-								</router-link>
-							</ul>
-						</div>
->>>>>>> b6e54f953d96b55ee859be97de6bdede1be7933d
 
             <div
               class="

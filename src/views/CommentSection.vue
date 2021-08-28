@@ -48,7 +48,7 @@
             font-lg
           "
         ></i>
-        <span @click="showCommentSection" class="d-none-xss"
+        <span @click="showCommentSection" class="d-none-xss cursor-pointer"
           >{{ post.commentCount }} Comment</span
         >
       </a>
@@ -69,8 +69,32 @@
       "
     >
       <div v-for="commentContainer in comments" :key="commentContainer.id">
-        <div v-for="comment in commentContainer" :key="comment.id">
-          {{ comment.content }}
+        <div class="flex-nowrap d-flex">
+          <input
+            v-model="commentInput"
+            class="
+              style2-input
+              ps-5
+              form-control
+              text-grey-900
+              font-xsss
+              fw-600
+            "
+            placeholder="Enter Your Comment"
+          />
+          <button @click="sendComment" class="nav-menu me-0 ms-2">Send</button>
+        </div>
+        <div
+          v-for="comment in commentContainer"
+          :key="comment.id"
+          class="mt-2 mb-2 card w-100 shadow-xss rounded-xxl border-10"
+        >
+          <Comment
+            :comment="comment"
+            :post="post"
+            :likeCount="comment.likesFrom.length"
+            :deleteComment="deleteComment"
+          />
         </div>
       </div>
     </div>
@@ -80,22 +104,25 @@
 <script>
 import globalservice from "../services/globalservice";
 import { mapGetters } from "vuex";
+import Comment from "./Comment.vue";
 
 export default {
   data: () => ({
     showSection: false,
     comments: [],
+    commentInput: "",
   }),
   props: ["post"],
+  components: {
+    Comment,
+  },
   computed: {
     ...mapGetters(["userId"]),
-    // test: function(){
-    //     return this.likeCount
-    // }
   },
   methods: {
     showCommentSection() {
       globalservice.getComments(this.post._id).then((res) => {
+        this.comments = [];
         this.comments.push(res.data?.comments);
         console.log(this.comments);
       });
@@ -117,6 +144,33 @@ export default {
           // this.snackbarText = "Bu mailde account movcud deyil"
           // this.snackbar = true
         });
+    },
+    sendComment() {
+      globalservice
+        .postComment(this.post._id, this.commentInput)
+        .then(() => {
+          this.commentInput = "";
+          globalservice.getComments(this.post._id).then((res) => {
+            this.comments = [];
+            this.comments.push(res.data?.comments);
+          });
+        })
+        .catch((err) => console.log(err));
+    },
+    deleteComment(commentId) {
+      globalservice
+        .deleteComment(this.post.postedUser[0], commentId)
+        .then(() => {
+          globalservice.getComments(this.post._id).then((res) => {
+            this.comments = [];
+            this.comments.push(res.data?.comments);
+          });
+        })
+        .catch((err) => console.log(err));
+    },
+    editComment(commentContent) {
+      this.editCommentBool = !this.editCommentBool;
+      this.editCommentInput = commentContent;
     },
   },
 };
