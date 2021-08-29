@@ -61,7 +61,6 @@
             btn-round-sm
             font-lg
           "
-<<<<<<< HEAD
         ></i>
         <span @click="showCommentSection" class="d-none-xss cursor-pointer"
           >{{ post.commentCount }} Comment</span
@@ -71,17 +70,6 @@
     <div
       v-if="showSection"
       class="
-=======
-				></i>
-				<span @click="showCommentSection" class="d-none-xss"
-					>{{ post.commentCount }} Comment</span
-				>
-			</a>
-		</div>
-		<div
-			v-if="showSection"
-			class="
->>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
         card
         w-100
         d-flex
@@ -93,7 +81,6 @@
         mb-3
         mt-3
       "
-<<<<<<< HEAD
     >
       <div v-for="commentContainer in comments" :key="commentContainer.id">
         <div class="flex-nowrap d-flex">
@@ -126,16 +113,6 @@
       </div>
     </div>
   </div>
-=======
-		>
-			<div v-for="commentContainer in comments" :key="commentContainer.id">
-				<div v-for="comment in commentContainer" :key="comment.id">
-					{{ comment.content }}
-				</div>
-			</div>
-		</div>
-	</div>
->>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
 </template>
 
 <script>
@@ -144,7 +121,6 @@ import { mapGetters } from "vuex";
 import Comment from "./Comment.vue";
 
 export default {
-<<<<<<< HEAD
   data: () => ({
     showSection: false,
     comments: [],
@@ -211,44 +187,5 @@ export default {
       this.editCommentInput = commentContent;
     },
   },
-=======
-	data: () => ({
-		showSection: false,
-		comments: [],
-	}),
-	props: ["post"],
-	computed: {
-		...mapGetters(["userId"]),
-		// test: function(){
-		//     return this.likeCount
-		// }
-	},
-	methods: {
-		showCommentSection() {
-			globalservice.getComments(this.post._id).then((res) => {
-				this.comments.push(res.data?.comments);
-				console.log(this.comments);
-			});
-			this.showSection = !this.showSection;
-		},
-		likeOrUnlike(id) {
-			globalservice
-				.likeOrUnlike(id)
-				.then(() => {
-					if (this.post.likesFrom.indexOf(this.userId) === -1) {
-						this.post.likesFrom.push(this.userId);
-					} else {
-						this.post.likesFrom = this.post.likesFrom.filter(
-							(postedId) => postedId !== this.userId
-						);
-					}
-				})
-				.catch(() => {
-					// this.snackbarText = "Bu mailde account movcud deyil"
-					// this.snackbar = true
-				});
-		},
-	},
->>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
 };
 </script>
