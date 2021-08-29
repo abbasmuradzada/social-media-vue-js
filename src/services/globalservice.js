@@ -15,21 +15,39 @@ axios.interceptors.request.use((config) => {
 
 const globalService = {
   login(credentials) {
-    return new Promise((resolve, reject) => {
-      axios
-        .post("/auth/login", {
-          email: credentials.email,
-          password: credentials.password,
-        })
-        .then((res) => {
-          if (res.data.user.token) {
-            resolve(res.data.user);
-          }
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+    if (credentials.email) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post("/auth/login", {
+            email: credentials.email,
+            password: credentials.password,
+          })
+          .then((res) => {
+            if (res.data.user.token) {
+              resolve(res.data.user);
+            }
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    } else {
+      return new Promise((resolve, reject) => {
+        axios
+          .post("/auth/login", {
+            userName: credentials.userName,
+            password: credentials.password,
+          })
+          .then((res) => {
+            if (res.data.user.token) {
+              resolve(res.data.user);
+            }
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    }
   },
   register(credentials) {
     console.log(credentials);
