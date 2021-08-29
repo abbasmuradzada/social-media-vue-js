@@ -47,7 +47,7 @@
 										v-model="email"
 										type="text"
 										class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
-										placeholder="Your Email Address"
+										placeholder="enter username or email"
 									/>
 								</div>
 								<div class="form-group icon-input mb-1">
