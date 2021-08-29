@@ -8,8 +8,10 @@ const ForgetPass = () =>
   import(/* webpackChunkName: "forget-password" */ "../views/ForgetPass");
 const Main = () => import(/* webpackChunkName: "main" */ "../views/Main");
 const Home = () => import(/* webpackChunkName: "home" */ "../views/Home");
-const Settings = () => import(/* webpackChunkName: "settings" */ "../views/Settings");
-const ResetPass = () => import(/* webpackChunkName: "reset-password" */ "../views/ResetPass");
+const Settings = () =>
+  import(/* webpackChunkName: "settings" */ "../views/Settings");
+const ResetPass = () =>
+  import(/* webpackChunkName: "reset-password" */ "../views/ResetPass");
 const Update = () => import(/* webpackChunkName: "update" */ "../views/Update");
 const MyProfile = () =>
   import(/* webpackChunkName: "my-profile" */ "../views/MyProfile");
@@ -21,8 +23,8 @@ const FollowList = () =>
   import(/* webpackChunkName: "main-layout" */ "../views/FollowList");
 const FollowerList = () =>
   import(/* webpackChunkName: "main-layout" */ "../views/FollowerList");
-// const AccountSettings = () =>
-//   import(/* webpackChunkName: "main-layout" */ "../views/AccountSettings");
+const AccountSettings = () =>
+  import(/* webpackChunkName: "main-layout" */ "../views/AccountSettings");
 
 Vue.use(VueRouter);
 
@@ -115,6 +117,15 @@ const routes = [
         },
       },
       {
+        path: "/settings/account-information",
+        name: "AccountSettings",
+        component: AccountSettings,
+        meta: {
+          isOnlyPublic: false,
+          requiresAuth: true,
+        },
+      },
+      {
         path: "/reset-password",
         name: "ResetPass",
         component: ResetPass,
@@ -152,7 +163,6 @@ const routes = [
       },
     ],
   },
-
 ];
 
 const router = new VueRouter({

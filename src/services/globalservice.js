@@ -364,6 +364,47 @@ const globalService = {
         });
     });
   },
+  updateUser(userUpdates) {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`/user`, {
+          _id: userUpdates.id,
+          userName: userUpdates.userName,
+          email: userUpdates.email,
+        })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+  uploadProfilePicture(credentials) {
+    console.log(credentials, "aaaaaaa");
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`/auth/profilePicture`, credentials)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+  deleteProfilePicture() {
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(`/auth/removePicture`)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
 };
 
 export default globalService;
