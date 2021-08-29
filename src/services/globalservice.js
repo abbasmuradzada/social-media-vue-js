@@ -380,11 +380,15 @@ const globalService = {
         });
     });
   },
-  uploadProfilePicture(credentials) {
-    console.log(credentials, "aaaaaaa");
+  uploadProfilePicture(key, value) {
+    console.log(key, value, "aaaaaaa");
+    const newData = new FormData();
+
+    newData.append(key, value);
+
     return new Promise((resolve, reject) => {
       axios
-        .post(`/auth/profilePicture`, credentials)
+        .post(`/auth/profilePicture`, newData)
         .then((res) => {
           resolve(res);
         })

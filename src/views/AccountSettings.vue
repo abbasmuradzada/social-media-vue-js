@@ -161,18 +161,19 @@ export default {
       this.backgroundImage = e;
     },
     updateUser() {
-      let data = new FormData();
+      const data = new FormData();
       //   const user = {
       //     userName: this.userName,
       //     email: this.email,
       //     _id: this.userId,
       //   };
-      data.image = this.profilePicture;
+      console.log(this.profilePicture);
+      data.append("user", this.profilePicture);
 
+      console.log(...data.entries(), ...data.keys());
       if (data) {
-        console.log("aaaaaaaaaaaa", data);
         globalservice
-          .uploadProfilePicture(data)
+          .uploadProfilePicture(...data.keys(), ...data.values())
           .then(() => {
             this.getUser();
           })
