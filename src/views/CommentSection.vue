@@ -61,6 +61,17 @@
             btn-round-sm
             font-lg
           "
+<<<<<<< HEAD
+        ></i>
+        <span @click="showCommentSection" class="d-none-xss cursor-pointer"
+          >{{ post.commentCount }} Comment</span
+        >
+      </a>
+    </div>
+    <div
+      v-if="showSection"
+      class="
+=======
 				></i>
 				<span @click="showCommentSection" class="d-none-xss"
 					>{{ post.commentCount }} Comment</span
@@ -70,6 +81,7 @@
 		<div
 			v-if="showSection"
 			class="
+>>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
         card
         w-100
         d-flex
@@ -81,6 +93,40 @@
         mb-3
         mt-3
       "
+<<<<<<< HEAD
+    >
+      <div v-for="commentContainer in comments" :key="commentContainer.id">
+        <div class="flex-nowrap d-flex">
+          <input
+            v-model="commentInput"
+            class="
+              style2-input
+              ps-5
+              form-control
+              text-grey-900
+              font-xsss
+              fw-600
+            "
+            placeholder="Enter Your Comment"
+          />
+          <button @click="sendComment" class="nav-menu me-0 ms-2">Send</button>
+        </div>
+        <div
+          v-for="comment in commentContainer"
+          :key="comment.id"
+          class="mt-2 mb-2 card w-100 shadow-xss rounded-xxl border-10"
+        >
+          <Comment
+            :comment="comment"
+            :post="post"
+            :likeCount="comment.likesFrom.length"
+            :deleteComment="deleteComment"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+=======
 		>
 			<div v-for="commentContainer in comments" :key="commentContainer.id">
 				<div v-for="comment in commentContainer" :key="comment.id">
@@ -89,13 +135,83 @@
 			</div>
 		</div>
 	</div>
+>>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
 </template>
 
 <script>
 import globalservice from "../services/globalservice";
 import { mapGetters } from "vuex";
+import Comment from "./Comment.vue";
 
 export default {
+<<<<<<< HEAD
+  data: () => ({
+    showSection: false,
+    comments: [],
+    commentInput: "",
+  }),
+  props: ["post"],
+  components: {
+    Comment,
+  },
+  computed: {
+    ...mapGetters(["userId"]),
+  },
+  methods: {
+    showCommentSection() {
+      globalservice.getComments(this.post._id).then((res) => {
+        this.comments = [];
+        this.comments.push(res.data?.comments);
+        console.log(this.comments);
+      });
+      this.showSection = !this.showSection;
+    },
+    likeOrUnlike(id) {
+      globalservice
+        .likeOrUnlike(id)
+        .then(() => {
+          if (this.post.likesFrom.indexOf(this.userId) === -1) {
+            this.post.likesFrom.push(this.userId);
+          } else {
+            this.post.likesFrom = this.post.likesFrom.filter(
+              (postedId) => postedId !== this.userId
+            );
+          }
+        })
+        .catch(() => {
+          // this.snackbarText = "Bu mailde account movcud deyil"
+          // this.snackbar = true
+        });
+    },
+    sendComment() {
+      globalservice
+        .postComment(this.post._id, this.commentInput)
+        .then(() => {
+          this.commentInput = "";
+          globalservice.getComments(this.post._id).then((res) => {
+            this.comments = [];
+            this.comments.push(res.data?.comments);
+          });
+        })
+        .catch((err) => console.log(err));
+    },
+    deleteComment(commentId) {
+      globalservice
+        .deleteComment(this.post.postedUser[0], commentId)
+        .then(() => {
+          globalservice.getComments(this.post._id).then((res) => {
+            this.comments = [];
+            this.comments.push(res.data?.comments);
+          });
+        })
+        .catch((err) => console.log(err));
+    },
+    editComment(commentContent) {
+      this.editCommentBool = !this.editCommentBool;
+      this.editCommentInput = commentContent;
+    },
+  },
+=======
 	data: () => ({
 		showSection: false,
 		comments: [],
@@ -133,5 +249,6 @@ export default {
 				});
 		},
 	},
+>>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
 };
 </script>

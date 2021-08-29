@@ -78,6 +78,21 @@
                 w350
                 theme-dark-bg
               "
+<<<<<<< HEAD
+            />
+          </div>
+        </form>
+        <a
+          class="p-2 text-center ms-auto menu-icon"
+          id="dropdownMenu3"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          ><span class="dot-count bg-warning"></span
+          ><i class="feather-bell font-xl text-current"></i
+        ></a>
+        <div
+          class="
+=======
 						/>
 					</div>
 				</form>
@@ -91,6 +106,7 @@
 				></a>
 				<div
 					class="
+>>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
             dropdown-menu dropdown-menu-end
             p-4
             rounded-3
@@ -187,6 +203,53 @@
                 mb-2
                 mt-2
               "
+<<<<<<< HEAD
+            >
+              <div class="nav-caption fw-600 font-xssss text-grey-500">
+                <span>New </span>Feeds
+              </div>
+              <ul class="mb-1 top-content">
+                <li class="logo d-none d-xl-block d-lg-block"></li>
+                <router-link
+                  :to="{
+                    name: 'Home',
+                  }"
+                >
+                  <li class="cursor-pointer">
+                    <a class="nav-content-bttn open-font"
+                      ><i
+                        class="feather-home btn-round-md bg-blue-gradiant me-3"
+                      ></i
+                      ><span>Home</span></a
+                    >
+                  </li>
+                </router-link>
+                <li class="cursor-pointer">
+                  <a class="nav-content-bttn open-font"
+                    ><i
+                      class="feather-zap btn-round-md bg-mini-gradiant me-3"
+                    ></i
+                    ><span>Popular Groups</span></a
+                  >
+                </li>
+                <router-link
+                  :to="{
+                    name: 'MyProfile',
+                    params: { userName },
+                  }"
+                >
+                  <li class="cursor-pointer">
+                    <a class="nav-content-bttn open-font"
+                      ><i
+                        class="feather-user btn-round-md bg-red-gradiant me-3"
+                      ></i
+                      ><span>My Profile</span></a
+                    >
+                  </li>
+                </router-link>
+              </ul>
+            </div>
+=======
 						>
 							<div class="nav-caption fw-600 font-xssss text-grey-500">
 								<span>New </span>Feeds
@@ -232,6 +295,7 @@
 								</router-link>
 							</ul>
 						</div>
+>>>>>>> b441d0b44abc21bdf919f804c12462fd400b5dff
 
             <div
               class="
