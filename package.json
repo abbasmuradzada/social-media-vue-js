@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@algoz098/vue-player": "^0.4.3",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "core-js": "^3.6.5",
     "themify-icons": "^1.0.0",
     "vue": "^2.6.11",
