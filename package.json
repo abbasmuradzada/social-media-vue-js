@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@algoz098/vue-player": "^0.4.3",
+    "ansi-html": "0.0.7",
     "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "set-value": "^4.1.0",
     "tar": "^6.1.11",
     "themify-icons": "^1.0.0",
     "trim": "^1.0.1",
